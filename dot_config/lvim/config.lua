@@ -14,7 +14,8 @@ lvim.transparent_window = true
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
 
-lvim.lsp.diagnostics.virtual_text = false
+-- lvim.lsp.diagnostics.virtual_text = false
+vim.diagnostic.config({ virtual_text = false })
 
 -- Change theme settings
 lvim.builtin.theme.tokyonight.options.dim_inactive = true
@@ -123,7 +124,7 @@ lvim.builtin.treesitter.highlight.enable = true
 lvim.builtin.treesitter.rainbow.enable = true
 
 lvim.builtin.cmp.formatting = {
-  format = require("tailwindcss-colorizer-cmp").formatter,
+  format = require_safe("tailwindcss-colorizer-cmp").formatter,
 }
 
 -- generic LSP settings
