@@ -4,4 +4,13 @@ return {
   opts = {
     background_colour = "#000000",
   },
+  keys = {
+    {
+      "<leader>tn",
+      function()
+        require("notify").dismiss({ silent = true, pending = true })
+      end,
+      desc = "Dismiss all Notifications",
+    },
+  },
 }
