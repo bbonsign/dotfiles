@@ -6,20 +6,22 @@ return {
 
   opts = {
     lsp = {
+      -- https://github.com/folke/noice.nvim/blob/main/lua/noice/config/views.lua
       hover = {
         silent = true,
         opts = {
           border = {
-            padding = { 0, 1 },
+            -- padding = { 0, 1 },
             style = "rounded",
           },
+          position = { row = 2, col = 0 },
         },
       },
 
       documentation = {
         opts = {
           border = {
-            padding = { 0, 1 },
+            -- padding = { 0, 0 },
             style = "rounded",
           },
         },

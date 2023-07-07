@@ -3,6 +3,10 @@ return {
     "akinsho/bufferline.nvim",
     enabled = false,
   },
+  {
+    "catppuccin/nvim",
+    enabled = false,
+  },
 
   {
     "ggandor/leap.nvim",
@@ -13,8 +17,8 @@ return {
     "echasnovski/mini.indentscope",
     enabled = false,
   },
-{
+  {
     "lukas-reineke/indent-blankline.nvim",
     enabled = false,
-  }
+  },
 }

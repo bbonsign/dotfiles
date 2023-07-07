@@ -78,6 +78,10 @@ return {
               modified = icons.git.modified,
               removed = icons.git.removed,
             },
+
+            on_click = function()
+              require("telescope.builtin").git_status()
+            end,
           },
         },
         lualine_y = {
