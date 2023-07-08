@@ -16,11 +16,14 @@ return {
         lualine_a = {
           {
             function()
-              return " 󰀘 "
+              return "࿇ "
             end,
             padding = { left = 0, right = 0 },
             color = {},
             cond = nil,
+            on_click = function()
+              vim.cmd.write()
+            end,
           },
         },
         lualine_b = { "branch" },
@@ -45,32 +48,51 @@ return {
               newfile = "[New]", -- Text to show for new created file before first writting
             },
           },
-          -- stylua: ignore
           {
-            function() return require("nvim-navic").get_location() end,
-            cond = function() return package.loaded["nvim-navic"] and require("nvim-navic").is_available() end,
+            function()
+              return require("nvim-navic").get_location()
+            end,
+            cond = function()
+              return package.loaded["nvim-navic"] and require("nvim-navic").is_available()
+            end,
           },
         },
         lualine_x = {
-          -- stylua: ignore
           {
-            function() return require("noice").api.status.command.get() end,
-            cond = function() return package.loaded["noice"] and require("noice").api.status.command.has() end,
+            function()
+              return require("noice").api.status.command.get()
+            end,
+            cond = function()
+              return package.loaded["noice"] and require("noice").api.status.command.has()
+            end,
             color = Util.fg("Statement"),
           },
-          -- stylua: ignore
           {
-            function() return require("noice").api.status.mode.get() end,
-            cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
+            function()
+              return require("noice").api.status.mode.get()
+            end,
+            cond = function()
+              return package.loaded["noice"] and require("noice").api.status.mode.has()
+            end,
             color = Util.fg("Constant"),
           },
-          -- stylua: ignore
           {
-            function() return "  " .. require("dap").status() end,
-            cond = function () return package.loaded["dap"] and require("dap").status() ~= "" end,
+            function()
+              return "  " .. require("dap").status()
+            end,
+            cond = function()
+              return package.loaded["dap"] and require("dap").status() ~= ""
+            end,
             color = Util.fg("Debug"),
           },
-          { require("lazy.status").updates, cond = require("lazy.status").has_updates, color = Util.fg("Special") },
+          {
+            require("lazy.status").updates,
+            cond = require("lazy.status").has_updates,
+            color = Util.fg("Special"),
+            on_click = function()
+              require("lazy").home()
+            end,
+          },
           {
             "diff",
             symbols = {
