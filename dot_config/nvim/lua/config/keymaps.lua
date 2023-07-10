@@ -48,7 +48,6 @@ map("v", "<C-a>", "^", { desc = "Beg of line" })
 map("c", "<C-e>", "<End>", { desc = "End of line" })
 map("c", "<C-a>", "<Home>", { desc = "Beg of line" })
 
-
 -- stylua: ignore start
 -- toggle options
 -- Taken from the default <leader>u prefixed keymaps, to also have <leader>t versions

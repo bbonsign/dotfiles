@@ -9,6 +9,13 @@ return {
       desc = "NeoTree Git status",
     },
     {
+      "<leader>bt",
+      function()
+        require("neo-tree.command").execute({ source = "buffers", toggle = true })
+      end,
+      desc = "NeoTree Git status",
+    },
+    {
       "<leader>gt",
       function()
         require("neo-tree.command").execute({ source = "git_status", toggle = true })
