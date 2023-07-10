@@ -1,9 +1,32 @@
 return {
   "nvim-neo-tree/neo-tree.nvim",
+  keys = {
+    {
+      "<leader>fS",
+      function()
+        require("neo-tree.command").execute({ source = "document_symbols", toggle = true })
+      end,
+      desc = "NeoTree Git status",
+    },
+    {
+      "<leader>gt",
+      function()
+        require("neo-tree.command").execute({ source = "git_status", toggle = true })
+      end,
+      desc = "NeoTree Git status",
+    },
+  },
   opts = {
     popup_border_style = "rounded",
     enable_git_status = true,
     enable_diagnostics = false,
+    sources = {
+      "filesystem",
+      "buffers",
+      "git_status",
+      "document_symbols",
+    },
+    source_selector = { winbar = true },
     window = {
       position = "right",
       mappings = {
