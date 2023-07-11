@@ -20,6 +20,9 @@ end
 
 vim.keymap.del("n", "<S-h>")
 vim.keymap.del("n", "<S-l>")
+vim.keymap.del("n", "<leader>l")
+
+map("n", "<leader>L", "<cmd>Lazy<cr>", { desc = "Lazy" })
 
 -- Use the blackhole register "_ by deiault for x
 map({ "n", "v" }, "x", '"_x')
@@ -35,8 +38,6 @@ map("n", "Q", "@q", { desc = 'Macro in "q' })
 map("v", "Q", [[:norm @q<CR>]], { desc = 'Macro in "q' })
 
 map("i", [[<C-\>]], "λ", { desc = "Insert λ characer" })
-
-map("n", "<leader>ll", "<cmd>Lazy<cr>", { desc = "Lazy" })
 
 -- shortcuts for ctrl-a and ctrl-e in insert/normalcommand mode
 map("i", "<C-e>", "<Esc>A", { desc = "End of line" })

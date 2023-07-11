@@ -8,7 +8,40 @@ return {
         require("lazyvim.plugins.lsp.format").format({ force = true })
       end
       keys[#keys + 1] = { "<leader>lf", format, desc = "Format Document" }
+      if require("lazyvim.util").has("inc-rename.nvim") then
+        keys[#keys + 1] = {
+          "<leader>lr",
+          function()
+            local inc_rename = require("inc_rename")
+            return ":" .. inc_rename.config.cmd_name .. " " .. vim.fn.expand("<cword>")
+          end,
+          expr = true,
+          desc = "Rename",
+          has = "rename",
+        }
+      else
+        keys[#keys + 1] = { "<leader>lr", vim.lsp.buf.rename, desc = "Rename", has = "rename" }
+      end
+
+      keys[#keys + 1] =
+        { "<leader>la", vim.lsp.buf.code_action, desc = "Code Action", mode = { "n", "v" }, has = "codeAction" }
+      keys[#keys + 1] = {
+        "<leader>lA",
+        function()
+          vim.lsp.buf.code_action({
+            context = {
+              only = {
+                "source",
+              },
+              diagnostics = {},
+            },
+          })
+        end,
+        desc = "Source Action",
+        has = "codeAction",
+      }
     end,
+
     opts = {
       -- options for vim.diagnostic.config()
       diagnostics = {
