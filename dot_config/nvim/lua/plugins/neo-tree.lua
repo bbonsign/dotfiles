@@ -27,6 +27,9 @@ return {
     popup_border_style = "rounded",
     enable_git_status = true,
     enable_diagnostics = false,
+    filesystem = {
+      hijack_netrw_behavior = "disabled",
+    },
     sources = {
       "filesystem",
       "buffers",
@@ -37,6 +40,7 @@ return {
     window = {
       position = "right",
       mappings = {
+        ["-"] = "navigate_up",
         ["h"] = function(state)
           local node = state.tree:get_node()
           if node.type == "directory" and node:is_expanded() then
