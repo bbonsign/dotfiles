@@ -8,6 +8,9 @@ return {
       before = true,
       after = false,
     },
+    modes = {
+      search = { enabled = false },
+    },
   },
   keys = {
     {

@@ -21,6 +21,11 @@ return {
       ["~"] = "actions.tcd",
       ["g."] = "actions.toggle_hidden",
     },
+    preview = {
+      win_options = {
+        winblend = 50,
+      },
+    },
   },
   config = function(_, opts)
     require("oil").setup(opts)
