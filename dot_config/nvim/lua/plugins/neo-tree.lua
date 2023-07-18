@@ -29,6 +29,9 @@ return {
     enable_diagnostics = false,
     filesystem = {
       hijack_netrw_behavior = "disabled",
+      window = {
+        mappings = { ["-"] = "navigate_up" },
+      },
     },
     sources = {
       "filesystem",
@@ -40,7 +43,6 @@ return {
     window = {
       position = "right",
       mappings = {
-        ["-"] = "navigate_up",
         ["h"] = function(state)
           local node = state.tree:get_node()
           if node.type == "directory" and node:is_expanded() then

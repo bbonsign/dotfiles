@@ -18,7 +18,6 @@ local function map(mode, lhs, rhs, opts)
   end
 end
 
-vim.keymap.del("n", "S")
 vim.keymap.del("n", "<S-h>")
 vim.keymap.del("n", "<S-l>")
 vim.keymap.del("n", "<leader>l")
