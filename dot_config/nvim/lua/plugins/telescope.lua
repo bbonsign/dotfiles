@@ -78,7 +78,6 @@ return {
         "--hidden",
         "--glob=!.git/",
       },
-
       mappings = {
         i = {
           ["<C-j>"] = function(...)
@@ -96,6 +95,11 @@ return {
         ["<C-k>"] = function(...)
           return actions.move_selection_previous(...)
         end,
+      },
+    },
+    pickers = {
+      lsp_references = {
+        show_line = false,
       },
     },
   },
