@@ -14,7 +14,7 @@ return {
             -- padding = { 0, 1 },
             style = "rounded",
           },
-          position = { row = 2, col = 0 },
+          position = { row = 2, col = 5 },
         },
       },
 
