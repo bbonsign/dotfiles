@@ -45,7 +45,7 @@ return {
     {
       "<leader>s/",
       ":Telescope<CR>",
-      desc = "find plugin file",
+      desc = "Telescope",
     },
     {
       "<leader>'",

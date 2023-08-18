@@ -45,6 +45,7 @@ return {
     opts = {
       -- options for vim.diagnostic.config()
       diagnostics = {
+        -- virtual_text = true,
         virtual_text = false,
         float = {
           -- focusable = false,
@@ -53,6 +54,15 @@ return {
           source = "always",
           header = "",
           prefix = "",
+        },
+        servers = {
+          rust_analyzer = {
+            settings = {
+              diagnostics = {
+                virtual_text = true,
+              },
+            },
+          },
         },
       },
     },

@@ -5,7 +5,11 @@ return {
     vim.cmd([[
         let g:VM_theme = 'nord'
 
+        " Set in keymaps.lua
+        let g:VM_leader = ';'
+
         let g:VM_maps = {}
+        let g:VM_maps['Motion ;'] = ';;'
         let g:VM_maps['Add Cursor Down'] = '<C-j>'
         let g:VM_maps['Add Cursor Up'] = '<C-k>'
 
