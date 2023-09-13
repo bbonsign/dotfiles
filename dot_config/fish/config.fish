@@ -8,6 +8,12 @@ set fish_color_search_match --background=4b719c
 # starship init fish | source
 # set -g async_prompt_functions _pure_prompt_git
 
+
+if [ $HOSTNAME = toolbox ]
+    alias wezterm='flatpak-spawn --host -- $HOME/.local/bin/wezterm'
+    set -xg BROWSER 'flatpak-spawn --host -- flatpak run org.mozilla.firefox'
+end
+
 function fish_user_key_bindings
     # Execute this once per mode that emacs bindings should be used in
     # fish_default_key_bindings -M insert
@@ -18,11 +24,12 @@ function fish_user_key_bindings
     # The argument specifies the initial mode (insert, "default" or visual).
     # fish_vi_key_bindings --no-erase insert
 
-    fzf_key_bindings &>/dev/null
+    # fzf_key_bindings &>/dev/null
     fzf_configure_bindings --variables=\e\cv --git_log=\e\cg --directory=\ct &>/dev/null
 end
 
 fish_user_key_bindings
+
 
 # Emulates vim's cursor shape behavior
 # Set the normal and visual mode cursors to a block
@@ -35,14 +42,14 @@ fish_user_key_bindings
 set -g fish_escape_delay_ms 10
 
 set -xg PAGER 'bat --plain'
-set -xg EDITOR lvim
-set -xg VISUAL lvim
+set -xg EDITOR nvim
+set -xg VISUAL nvim
 # CTRL-x opens EDITOR for editing long commands (C-x C-x in tmux)
 # Note: Alt-e and Alt-v also open EDITOR for editing commands
 # bind \cx edit_command_buffer
 
 # open man pages in neovim
-set -xg MANPAGER 'lvim +Man!'
+set -xg MANPAGER 'nvim +Man!'
 
 
 set -xg FZF_DEFAULT_COMMAND "fd --color always --no-ignore --follow --ignore-file '$HOME/.config/fd/ignore'"
@@ -70,15 +77,16 @@ if command -v pyenv 1>/dev/null 2>&1
 end
 
 set os (uname)
-if test "$os" = "Linux"
-  # source ~/.asdf/asdf.fish
-  if test -e /opt/asdf-vm/asdf.fish
-    source /opt/asdf-vm/asdf.fish
-  end
-else
-  # Mac/homebrew
-  source /usr/local/opt/asdf/libexec/asdf.fish
-end
+source ~/.asdf/asdf.fish
+# if test "$os" = "Linux"
+#   # source ~/.asdf/asdf.fish
+#   if test -e /opt/asdf-vm/asdf.fish
+#     source /opt/asdf-vm/asdf.fish
+#   end
+# else
+#   # Mac/homebrew
+#   source /usr/local/opt/asdf/libexec/asdf.fish
+# end
 
 # pipenv completions: https://pipenv.pypa.io/en/latest/advanced/#shell-completion
 # eval (env _PIPENV_COMPLETE=fish_source pipenv)
@@ -90,7 +98,12 @@ end
 
 set -gx SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/ssh-agent.socket"
 
+set -gx PATH "$HOME/.cargo/bin" $PATH
+set -gx PATH "$HOME/go/bin" $PATH
+
 # pnpm
 set -gx PNPM_HOME "/home/bbonsign/.local/share/pnpm"
-set -gx PATH "$PNPM_HOME" $PATH
+if not string match -q -- $PNPM_HOME $PATH
+    set -gx PATH "$PNPM_HOME" $PATH
+end
 # pnpm end
