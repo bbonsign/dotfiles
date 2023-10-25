@@ -5,7 +5,7 @@ return {
     init = function()
       local keys = require("lazyvim.plugins.lsp.keymaps").get()
       local format = function()
-        require("lazyvim.plugins.lsp.format").format({ force = true })
+        require("lazyvim.util").format({ force = true })
       end
       keys[#keys + 1] = { "<leader>lf", format, desc = "Format Document" }
       if require("lazyvim.util").has("inc-rename.nvim") then
@@ -69,7 +69,7 @@ return {
   },
 
   {
-    "jose-elias-alvarez/null-ls.nvim",
+    "nvimtools/none-ls.nvim",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = { "mason.nvim" },
     opts = function()

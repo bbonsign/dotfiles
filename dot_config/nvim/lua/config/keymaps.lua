@@ -52,11 +52,11 @@ map("c", "<C-a>", "<Home>", { desc = "Beg of line" })
 -- stylua: ignore start
 -- toggle options
 -- Taken from the default <leader>u prefixed keymaps, to also have <leader>t versions
-map("n", "<leader>tf", require("lazyvim.plugins.lsp.format").toggle, { desc = "Toggle format on Save" })
+map("n", "<leader>tf", require("lazyvim.util").format.toggle, { desc = "Toggle format on Save" })
 map("n", "<leader>ts", function() Util.toggle("spell") end, { desc = "Toggle Spelling" })
 map("n", "<leader>tw", function() Util.toggle("wrap") end, { desc = "Toggle Word Wrap" })
 map("n", "<leader>tl", function() Util.toggle("relativenumber", true) Util.toggle("number") end, { desc = "Toggle Line Numbers" })
-map("n", "<leader>td", Util.toggle_diagnostics, { desc = "Toggle Diagnostics" })
+map("n", "<leader>td", Util.toggle.diagnostics, { desc = "Toggle Diagnostics" })
 map("n", "<leader>tc", ":set cursorline!<CR>", { desc = "Toggle cursorline" })
 map("n", "<leader>uc", ":set cursorline!<CR>", { desc = "Toggle cursorline" })
 
