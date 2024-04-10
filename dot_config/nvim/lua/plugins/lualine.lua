@@ -16,7 +16,7 @@ return {
         lualine_a = {
           {
             function()
-              return "࿇ "
+              return "  "
             end,
             padding = { left = 0, right = 0 },
             color = {},
@@ -107,6 +107,7 @@ return {
           },
         },
         lualine_y = {
+          { "fileformat", separator = "|" },
           { "progress", separator = " ", padding = { left = 1, right = 0 } },
           { "location", padding = { left = 0, right = 1 } },
         },

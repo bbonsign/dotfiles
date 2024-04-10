@@ -21,6 +21,14 @@ end
 vim.keymap.del("n", "<S-h>")
 vim.keymap.del("n", "<S-l>")
 vim.keymap.del("n", "<leader>l")
+vim.keymap.del("n", "<C-h>")
+vim.keymap.del("n", "<C-j>")
+vim.keymap.del("n", "<C-k>")
+vim.keymap.del("n", "<C-l>")
+-- vim.keymap.del("n", "<A-h>")
+-- vim.keymap.del("n", "<A-j>")
+-- vim.keymap.del("n", "<A-k>")
+-- vim.keymap.del("n", "<A-l>")
 
 map("n", "<leader>L", "<cmd>Lazy<cr>", { desc = "Lazy" })
 
@@ -38,6 +46,7 @@ map("n", "Q", "@q", { desc = 'Macro in "q' })
 map("v", "Q", [[:norm @q<CR>]], { desc = 'Macro in "q' })
 
 map("i", [[<C-\>]], "λ", { desc = "Insert λ characer" })
+map("i", [[<C-j>]], "|>", { desc = "|> Pipe" })
 
 -- shortcuts for ctrl-a and ctrl-e in insert/normalcommand mode
 map("i", "<C-e>", "<Esc>A", { desc = "End of line" })
@@ -96,3 +105,8 @@ map("n", "<leader>wt", ":tab split<CR>", { desc = "New tab w/ current buf" })
 map("n", "<leader>wv", ":vsplit<CR>", { desc = "Veritcal split" })
 map("n", "<leader>wW", "<C-w>W", { desc = "Other window <-" })
 map("n", "<leader>ww", "<C-w>w", { desc = "Other window ->" })
+
+-- map("n", "<A-h>", ":<C-U>TmuxNavigateLeft<CR>", { desc = "TmuxLeft" })
+-- map("n", "<A-j>", ":<C-U>TmuxNavigateDown<CR>", { desc = "TmuxDown" })
+-- map("n", "<A-k>", ":<C-U>TmuxNavigateUp<CR>", { desc = "TmuxUp" })
+-- map("n", "<A-l>", ":<C-U>TmuxNavigateRight<CR>", { desc = "TmuxRight" })

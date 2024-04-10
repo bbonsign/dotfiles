@@ -52,4 +52,9 @@ return {
       },
     },
   },
+
+  {
+    "IndianBoy42/tree-sitter-just",
+    enabled = true,
+  },
 }

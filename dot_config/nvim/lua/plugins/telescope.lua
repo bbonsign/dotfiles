@@ -67,6 +67,7 @@ return {
   opts = {
     defaults = {
       winblend = 5,
+      path_display = { truncate = true },
       vimgrep_arguments = {
         "rg",
         "--color=never",

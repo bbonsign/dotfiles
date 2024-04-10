@@ -1,2 +1,4 @@
-style:
+format:
   stylua .
+
+alias f := format
