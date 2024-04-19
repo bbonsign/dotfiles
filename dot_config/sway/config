@@ -38,11 +38,11 @@ set {
   # Recommends: foot
   # $wezterm flatpak run org.wezfurlong.wezterm
   # .local/bin/wezterm is a downloaded AppImage
-  # $wezterm $HOME/.local/bin/wezterm
-  # $term $wezterm start $HOME/.local/bin/toolbox_enter_fish
-  # $host_term $wezterm
-  $term kitty sh -c "$HOME/.local/bin/toolbox_enter_fish"
-  $host_term kitty
+  $wezterm $HOME/.local/bin/wezterm
+  $term $wezterm
+  $host_term $wezterm
+  # $term kitty sh -c "$HOME/.local/bin/toolbox_enter_fish"
+  # $host_term kitty
 
   # Your preferred application launcher
   # Note: pass the final command to swaymsg so that the resulting window can be opened
