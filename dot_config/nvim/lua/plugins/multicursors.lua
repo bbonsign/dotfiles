@@ -10,8 +10,8 @@ return {
 
         let g:VM_maps = {}
         let g:VM_maps['Motion ;'] = ';;'
-        let g:VM_maps['Add Cursor Down'] = '<C-j>'
-        let g:VM_maps['Add Cursor Up'] = '<C-k>'
+        " let g:VM_maps['Add Cursor Down'] = '<C-j>'
+        " let g:VM_maps['Add Cursor Up'] = '<C-k>'
 
         let g:VM_mouse_mappings = 1
 

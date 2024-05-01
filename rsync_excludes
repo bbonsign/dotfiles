@@ -1,9 +1,16 @@
+# **** default - Wed May  1 12:51:41 2024
+# ** Launching RSYNC command (simulation mode):
+# rsync -r -n -t -p -o -g -v --progress --delete -s --exclude-from=/var/home/bbonsign/rsync_excludes /var/home/bbonsign /run/media/bbonsign/e6aa6f59-aa41-417b-b6c1-cf1ef4524658/home_backup/
+
 .1password
 .asdf
 .aws-sam
 .bash_completions
 .cache
 .cargo
+.config/Slack
+.config/chromium
+.config/libreoffice
 .cookiecutter_replay
 .docker
 .elixir_ls
@@ -16,20 +23,30 @@
 .local
 .luarocks.bak
 .nano
+.nix-defexpr
 .npm
+.mix
 .pki
 .pyenv
 .pytest_cache
+.redhat
 .rustup
 .surrealdb
+.opam
 .var
 .visidata
+.themes
+.tmux
+.yarn
 .zfunc
-Downloads
+aws
 lua_modules
 clones
 AppImages
+snap
 node_modules
+go
+tmp
 
 
 .Xclients
@@ -58,3 +75,13 @@ node_modules
 .config/GIMP
 .config/appimagelauncher.cfg
 .vim/
+
+**/__pycache__
+**/deps/*
+**/_build/*
+code/rust-book/target
+code/rust-book/**/target
+code/rustlings/target
+code/rustlings/**/target
+code/zero2prod/target
+code/zero2prod/**/target

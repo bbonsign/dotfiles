@@ -35,6 +35,12 @@ map("n", "<leader>L", "<cmd>Lazy<cr>", { desc = "Lazy" })
 -- Use the blackhole register "_ by deiault for x
 map({ "n", "v" }, "x", '"_x')
 
+-- To complement the default <c-y> for scrolling text up/down
+-- with out moving cursor
+map("n", "<c-h>", "<c-e>")
+map("n", "<c-j>", "<c-e>")
+map("n", "<c-k>", "<c-y>")
+
 -- Center line when jumping to search results
 map("n", "n", "nzz")
 map("n", "N", "Nzz")
@@ -105,8 +111,3 @@ map("n", "<leader>wt", ":tab split<CR>", { desc = "New tab w/ current buf" })
 map("n", "<leader>wv", ":vsplit<CR>", { desc = "Veritcal split" })
 map("n", "<leader>wW", "<C-w>W", { desc = "Other window <-" })
 map("n", "<leader>ww", "<C-w>w", { desc = "Other window ->" })
-
--- map("n", "<A-h>", ":<C-U>TmuxNavigateLeft<CR>", { desc = "TmuxLeft" })
--- map("n", "<A-j>", ":<C-U>TmuxNavigateDown<CR>", { desc = "TmuxDown" })
--- map("n", "<A-k>", ":<C-U>TmuxNavigateUp<CR>", { desc = "TmuxUp" })
--- map("n", "<A-l>", ":<C-U>TmuxNavigateRight<CR>", { desc = "TmuxRight" })
