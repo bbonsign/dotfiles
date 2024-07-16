@@ -3,6 +3,8 @@ return {
   { "tpope/vim-unimpaired" },
 
   { "mbbill/undotree" },
+  { "mbbill/undotree" },
+
   {
     "NvChad/nvim-colorizer.lua",
     config = function()

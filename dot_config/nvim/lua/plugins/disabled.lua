@@ -18,6 +18,16 @@ return {
     "echasnovski/mini.indentscope",
     enabled = false,
   },
+
+  {
+    "echasnovski/mini.comment",
+    enabled = false,
+  },
+
+  {
+    "ggandor/leap.nvim",
+    enabled = false,
+  },
   {
     "lukas-reineke/indent-blankline.nvim",
     enabled = false,

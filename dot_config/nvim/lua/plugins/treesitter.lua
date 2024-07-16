@@ -5,6 +5,7 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter",
+    dependencies = "nushell/tree-sitter-nu",
     opts = {
       highlight = { enable = true },
       indent = { enable = true },
@@ -30,6 +31,7 @@ return {
         "markdown",
         "markdown_inline",
         "nix",
+        "nu",
         "python",
         "query",
         "regex",

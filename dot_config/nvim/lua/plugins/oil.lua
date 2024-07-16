@@ -3,6 +3,8 @@ return {
   -- Optional dependencies
   dependencies = { "nvim-tree/nvim-web-devicons" },
   opts = {
+    delete_to_trash = true,
+    skip_confirm_for_simple_edits = true,
     use_default_keymaps = false,
     columns = {
       "icon",
@@ -11,7 +13,7 @@ return {
       -- "mtime",
     },
     keymaps = {
-      ["g?"] = "actions.show_help",
+      ["?"] = "actions.show_help",
       ["<CR>"] = "actions.select",
       l = "actions.select",
       ["<C-v>"] = "actions.select_vsplit",
@@ -26,6 +28,14 @@ return {
       ["`"] = "actions.cd",
       ["~"] = "actions.tcd",
       ["g."] = "actions.toggle_hidden",
+      ["<leader>:"] = {
+        "actions.open_cmdline",
+        opts = {
+          shorten_path = true,
+          modify = ":h",
+        },
+        desc = "Open the command line with the current directory as an argument",
+      },
     },
     preview = {
       win_options = {

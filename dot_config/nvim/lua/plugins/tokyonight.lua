@@ -29,7 +29,7 @@ return {
     end,
     on_highlights = function(hl, colors)
       hl.FloatBorder.fg = colors.blue7
-      hl.LspFloatWinBorder.fg = colors.blue7
+      -- hl.LspFloatWinBorder.fg = colors.blue7
       -- hl.LspFloatWinNormal.fg = colors.blue7
       hl.LspInfoBorder.fg = colors.blue7
       hl.CmpDocumentationBorder.fg = colors.blue7

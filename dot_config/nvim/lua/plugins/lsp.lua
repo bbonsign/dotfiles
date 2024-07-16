@@ -40,6 +40,15 @@ return {
         desc = "Source Action",
         has = "codeAction",
       }
+      keys[#keys + 1] = {
+        "<leader>li",
+        function()
+          vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ nil }))
+        end,
+        desc = "Toggle Inlay Hints",
+        mode = { "n", "v" },
+        has = "inlay",
+      }
     end,
 
     opts = {
@@ -59,7 +68,7 @@ return {
           emmet_ls = {
             filetypes = {
               "html",
-              "elixir",
+              -- "elixir",
               "heex",
               "typescriptreact",
               "javascriptreact",
@@ -121,11 +130,4 @@ return {
       }
     end,
   },
-
-  -- {
-  --   "simrat39/symbols-outline.nvim",
-  --   cmd = "SymbolsOutline",
-  --   keys = { { "<leader>cs", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline" } },
-  --   config = true,
-  -- },
 }
