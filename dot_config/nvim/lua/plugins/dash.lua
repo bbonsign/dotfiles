@@ -3,7 +3,7 @@ return {
   event = "VimEnter",
   opts = function()
     local logo = [[
-                        _)
+                 _)
  __ \   _ \  _ \\ \   / | __ `__ \
  |   |  __/ (   |\ \ /  | |   |   |
 _|  _|\___|\___/  \_/  _|_|  _|  _|
