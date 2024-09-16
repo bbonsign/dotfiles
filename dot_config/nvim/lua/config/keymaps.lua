@@ -56,7 +56,7 @@ map("v", "Q", [[:norm @q<CR>]], { desc = 'Macro in "q' })
 map("i", [[<C-\>]], "λ", { desc = "Insert λ characer" })
 map("i", [[<C-j>]], "|>", { desc = "|> Pipe" })
 
--- shortcuts for ctrl-a and ctrl-e in insert/normalcommand mode
+-- shortcuts for ctrl-a and ctrl-e in insert/normal command mode
 map("i", "<C-e>", "<Esc>A", { desc = "End of line" })
 map("i", "<C-a>", "<Esc>I", { desc = "Beg of line" })
 map("n", "<C-e>", "$", { desc = "End of line" })
@@ -70,12 +70,15 @@ map("c", "<C-a>", "<Home>", { desc = "Beg of line" })
 -- toggle options
 -- Taken from the default <leader>u prefixed keymaps, to also have <leader>t versions
 map("n", "<leader>tf", require("lazyvim.util").format.toggle, { desc = "Toggle format on Save" })
-map("n", "<leader>ts", function() Util.toggle("spell") end, { desc = "Toggle Spelling" })
+map("n", "<leader>ts", ":set spell!<CR>", { desc = "Toggle Spelling" })
 map("n", "<leader>tw", function() Util.toggle("wrap") end, { desc = "Toggle Word Wrap" })
 map("n", "<leader>tl", function() Util.toggle("relativenumber", true) Util.toggle("number") end, { desc = "Toggle Line Numbers" })
 -- map("n", "<leader>td", Util.toggle.diagnostics, { desc = "Toggle Diagnostics" })
 map("n", "<leader>tc", ":set cursorline!<CR>", { desc = "Toggle cursorline" })
 map("n", "<leader>uc", ":set cursorline!<CR>", { desc = "Toggle cursorline" })
+
+map("n", "<leader>tt", ":Twilight<CR>", { desc = "Toggle Twilight" })
+map("n", "<leader>ut", ":Twilight<CR>", { desc = "Toggle Twilight" })
 
 local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 3
 map("n", "<leader>tC", function() Util.toggle("conceallevel", false, {0, conceallevel}) end, { desc = "Toggle Conceal" })
