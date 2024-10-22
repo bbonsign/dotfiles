@@ -65,6 +65,20 @@ return {
           prefix = "",
         },
         servers = {
+          pyright = {
+            -- Using Ruff's import organizer
+            disableOrganizeImports = true,
+            -- analysis = {
+            --   -- Ignore all files for analysis to exclusively use Ruff for linting
+            --   ignore = { "*" },
+            -- },
+          },
+          python = {
+            analysis = {
+              -- Ignore all files for analysis to exclusively use Ruff for linting
+              ignore = { "*" },
+            },
+          },
           emmet_ls = {
             filetypes = {
               "html",
@@ -119,7 +133,6 @@ return {
         root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git"),
         sources = {
           nls.builtins.diagnostics.fish,
-          nls.builtins.formatting.shfmt,
         },
       }
     end,
@@ -129,9 +142,9 @@ return {
     "stevearc/conform.nvim",
     opts = {
       formatters_by_ft = {
+        sh = { "shfmt" },
         lua = { "stylua" },
         fish = { "fish_indent" },
-        sh = { "shfmt" },
         python = { "ruff_organize_imports", "ruff_format" },
         -- -- You can customize some of the format options for the filetype (:help conform.format)
         -- rust = { "rustfmt", lsp_format = "fallback" },
