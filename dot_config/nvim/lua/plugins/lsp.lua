@@ -118,16 +118,26 @@ return {
       return {
         root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git"),
         sources = {
-          nls.builtins.formatting.fish_indent,
           nls.builtins.diagnostics.fish,
-          nls.builtins.formatting.stylua,
           nls.builtins.formatting.shfmt,
-          nls.builtins.formatting.black,
-          nls.builtins.formatting.isort.with({
-            extra_args = { "--profile", "black" },
-          }),
         },
       }
     end,
+  },
+
+  {
+    "stevearc/conform.nvim",
+    opts = {
+      formatters_by_ft = {
+        lua = { "stylua" },
+        fish = { "fish_indent" },
+        sh = { "shfmt" },
+        python = { "ruff_organize_imports", "ruff_format" },
+        -- -- You can customize some of the format options for the filetype (:help conform.format)
+        -- rust = { "rustfmt", lsp_format = "fallback" },
+        -- -- Conform will run the first available formatter
+        -- javascript = { "prettierd", "prettier", stop_after_first = true },
+      },
+    },
   },
 }
