@@ -77,9 +77,6 @@ map("n", "<leader>tl", function() Util.toggle("relativenumber", true) Util.toggl
 map("n", "<leader>tc", ":set cursorline!<CR>", { desc = "Toggle cursorline" })
 map("n", "<leader>uc", ":set cursorline!<CR>", { desc = "Toggle cursorline" })
 
-map("n", "<leader>tt", ":Twilight<CR>", { desc = "Toggle Twilight" })
-map("n", "<leader>ut", ":Twilight<CR>", { desc = "Toggle Twilight" })
-
 local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 3
 map("n", "<leader>tC", function() Util.toggle("conceallevel", false, {0, conceallevel}) end, { desc = "Toggle Conceal" })
 map("n", "<leader>uC", function() Util.toggle("conceallevel", false, {0, conceallevel}) end, { desc = "Toggle Conceal" })
