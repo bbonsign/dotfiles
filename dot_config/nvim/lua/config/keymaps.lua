@@ -116,3 +116,15 @@ map("n", "<leader>wt", ":tab split<CR>", { desc = "New tab w/ current buf" })
 map("n", "<leader>wv", ":vsplit<CR>", { desc = "Veritcal split" })
 map("n", "<leader>wW", "<C-w>W", { desc = "Other window <-" })
 map("n", "<leader>ww", "<C-w>w", { desc = "Other window ->" })
+
+-- https://github.com/nvzone/menu
+vim.keymap.set("n", "<C-t>", function()
+  require("menu").open("default", { border = true })
+end, {})
+
+vim.keymap.set("n", "<RightMouse>", function()
+  vim.cmd.exec('"normal! \\<RightMouse>"')
+
+  local options = vim.bo.ft == "NvimTree" and "nvimtree" or "default"
+  require("menu").open(options, { mouse = true, border = true })
+end, {})
