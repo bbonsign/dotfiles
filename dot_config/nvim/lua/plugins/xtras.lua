@@ -1,4 +1,5 @@
 return {
+  -- Search for nerd font icons
   {
     "2kabhishek/nerdy.nvim",
     dependencies = {

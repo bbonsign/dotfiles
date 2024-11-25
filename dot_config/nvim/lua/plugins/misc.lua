@@ -25,4 +25,6 @@ return {
       })
     end,
   },
+
+  -- { "echasnovski/mini.operators", version = false },
 }

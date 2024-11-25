@@ -1,6 +1,23 @@
 return {
   "nvim-neo-tree/neo-tree.nvim",
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    "nvim-tree/nvim-web-devicons",
+    "MunifTanjim/nui.nvim",
+  },
   keys = {
+    {
+      "<leader>e",
+      ":Neotree toggle float<CR>",
+      silent = true,
+      desc = "Float File Explorer",
+    },
+    {
+      "<leader><Tab>",
+      ":Neotree toggle right<CR>",
+      silent = true,
+      desc = "Right File Explorer",
+    },
     {
       "<leader>fS",
       function()
@@ -24,6 +41,7 @@ return {
     },
   },
   opts = {
+    close_if_last_window = true,
     popup_border_style = "rounded",
     enable_git_status = true,
     enable_diagnostics = false,
@@ -39,10 +57,21 @@ return {
       "git_status",
       "document_symbols",
     },
-    source_selector = { winbar = true },
+    source_selector = {
+      winbar = true,
+      sources = {
+        { source = "filesystem", display_name = "   Files " },
+        { source = "buffers", display_name = "   Buffers " },
+        { source = "git_status", display_name = "   Git Status " },
+      },
+    },
     window = {
-      position = "right",
+      position = "float", -- "right"
       mappings = {
+        ["L"] = "next_source",
+        ["H"] = "prev_source",
+        ["]"] = "next_source",
+        ["["] = "prev_source",
         ["h"] = function(state)
           local node = state.tree:get_node()
           if node.type == "directory" and node:is_expanded() then
