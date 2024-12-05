@@ -47,6 +47,8 @@ map("n", "<c-k>", "<c-y>")
 map("n", "n", "nzz")
 map("n", "N", "Nzz")
 
+map({ "n", "v" }, "g.", "g`.", { desc = "Goto last edit" })
+
 map({ "n", "x" }, "gw", "*N", { desc = "Search word under cursor" })
 map({ "n", "x" }, "<CR>", "*N", { desc = "Search word under cursor" })
 
