@@ -131,9 +131,11 @@ return {
         mappings = {
           i = {
             ["<C-f>"] = actions.to_fuzzy_refine,
+            ["<C-space>"] = action_layout.toggle_preview,
           },
           n = {
             ["<C-f>"] = actions.to_fuzzy_refine,
+            ["<C-space>"] = action_layout.toggle_preview,
           },
         },
       },
@@ -145,9 +147,11 @@ return {
         mappings = {
           i = {
             ["<C-f>"] = actions.to_fuzzy_refine,
+            ["<C-space>"] = action_layout.toggle_preview,
           },
           n = {
             ["<C-f>"] = actions.to_fuzzy_refine,
+            ["<C-space>"] = action_layout.toggle_preview,
           },
         },
       },
