@@ -126,11 +126,31 @@ return {
       highlights = { theme = "ivy" },
       jumplist = { theme = "ivy" },
       keymaps = { theme = "ivy" },
-      live_grep = { theme = "ivy" },
+      live_grep = {
+        theme = "ivy",
+        mappings = {
+          i = {
+            ["<C-f>"] = actions.to_fuzzy_refine,
+          },
+          n = {
+            ["<C-f>"] = actions.to_fuzzy_refine,
+          },
+        },
+      },
       loclist = { theme = "ivy" },
       lsp_definitions = { theme = "ivy" },
       lsp_document_symbols = { theme = "ivy" },
-      lsp_dynamic_workspace_symbols = { theme = "ivy" },
+      lsp_dynamic_workspace_symbols = {
+        theme = "ivy",
+        mappings = {
+          i = {
+            ["<C-f>"] = actions.to_fuzzy_refine,
+          },
+          n = {
+            ["<C-f>"] = actions.to_fuzzy_refine,
+          },
+        },
+      },
       lsp_implementations = { theme = "ivy" },
       lsp_incoming_calls = { theme = "ivy" },
       lsp_outgoing_calls = { theme = "ivy" },

@@ -47,12 +47,12 @@ return {
         list = {
           selection = "manual",
         },
-        -- accept = {
-        --   -- experimental auto-brackets support
-        --   auto_brackets = {
-        --     enabled = true,
-        --   },
-        -- },
+        accept = {
+          -- experimental auto-brackets support
+          auto_brackets = {
+            enabled = false,
+          },
+        },
         menu = {
           border = "rounded",
           winblend = 10,
@@ -79,10 +79,9 @@ return {
         default = { "lsp", "path", "snippets", "buffer" },
         cmdline = {},
       },
-
       keymap = {
         preset = "enter",
-        ["<Esc>"] = { "hide", "fallback" },
+        -- ["<Esc>"] = { "hide", "fallback" },
         ["<C-c>"] = { "cancel", "fallback" },
         ["<C-k>"] = { "select_prev", "fallback" },
         ["<C-j>"] = { "select_next", "fallback" },
