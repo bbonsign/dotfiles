@@ -1,65 +1,164 @@
 return {
-  "hrsh7th/nvim-cmp",
-  version = false, -- last release is way too old
-  event = "InsertEnter",
-  dependencies = {
-    "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-path",
-    "saadparwaiz1/cmp_luasnip",
-    { "roobert/tailwindcss-colorizer-cmp.nvim", config = true },
-  },
-  opts = function()
-    vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
-    local cmp = require("cmp")
-    local defaults = require("cmp.config.default")()
-    return {
-      completion = {
-        completeopt = "menu,menuone,noinsert",
-      },
-      snippet = {
-        expand = function(args)
-          require("luasnip").lsp_expand(args.body)
-        end,
-      },
-      window = {
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
-      },
-      mapping = cmp.mapping.preset.insert({
-        ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-        ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-        ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-f>"] = cmp.mapping.scroll_docs(4),
-        ["<C-Space>"] = cmp.mapping.complete(),
-        ["<C-e>"] = cmp.mapping.abort(),
-        ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-        ["<S-CR>"] = cmp.mapping.confirm({
-          behavior = cmp.ConfirmBehavior.Insert,
-          select = true,
-        }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-      }),
-      sources = cmp.config.sources({
-        { name = "nvim_lsp" },
-        { name = "luasnip" },
-        { name = "buffer" },
-        { name = "path" },
-      }),
-      formatting = {
-        format = function(_, item)
-          local icons = require("lazyvim.config").icons.kinds
-          if icons[item.kind] then
-            item.kind = icons[item.kind] .. item.kind
-          end
-          return item
-        end,
-      },
-      experimental = {
-        ghost_text = {
-          hl_group = "CmpGhostText",
+  {
+    "saghen/blink.cmp",
+    opts = {
+      appearance = {
+        -- sets the fallback highlight groups to nvim-cmp's highlight groups
+        -- useful for when your theme doesn't support blink.cmp
+        -- will be removed in a future release, assuming themes add support
+        -- use_nvim_cmp_as_default = false,
+        -- set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+        -- adjusts spacing to ensure icons are aligned
+        nerd_font_variant = "normal",
+        kind_icons = {
+          Text = "󰉿 ",
+          Method = "󰊕",
+          Function = "󰊕",
+          Constructor = "󰒓 ",
+
+          Field = "󰜢 ",
+          Variable = "󰆦 ",
+          Property = "󰖷 ",
+
+          Class = "󱡠 ",
+          Interface = "󱡠 ",
+          Struct = "󱡠 ",
+          Module = "󰅩 ",
+
+          Unit = "󰪚 ",
+          Value = " ",
+          Enum = " ",
+          EnumMember = " ",
+
+          Keyword = "󰻾",
+          Constant = "󰏿",
+
+          Snippet = " ",
+          Color = "󰏘 ",
+          File = "󰈔",
+          Reference = "󰬲 ",
+          Folder = "󰉋 ",
+          Event = "󱐋",
+          Operator = "󰪚 ",
+          TypeParameter = "󰬛 ",
         },
       },
-      sorting = defaults.sorting,
-    }
-  end,
+      completion = {
+        list = {
+          selection = "manual",
+        },
+        -- accept = {
+        --   -- experimental auto-brackets support
+        --   auto_brackets = {
+        --     enabled = true,
+        --   },
+        -- },
+        menu = {
+          border = "rounded",
+          winblend = 10,
+        },
+        documentation = {
+          auto_show = true,
+          auto_show_delay_ms = 50,
+          window = {
+            border = "rounded",
+          },
+        },
+        -- ghost_text = {
+        --   enabled = vim.g.ai_cmp,
+        -- },
+      },
+
+      -- experimental signature help support
+      -- signature = { enabled = true },
+
+      sources = {
+        -- adding any nvim-cmp sources here will enable them
+        -- with blink.compat
+        compat = {},
+        default = { "lsp", "path", "snippets", "buffer" },
+        cmdline = {},
+      },
+
+      keymap = {
+        preset = "enter",
+        ["<Esc>"] = { "hide", "fallback" },
+        ["<C-c>"] = { "cancel", "fallback" },
+        ["<C-k>"] = { "select_prev", "fallback" },
+        ["<C-j>"] = { "select_next", "fallback" },
+        ["<C-y>"] = { "select_and_accept" },
+        ["<Tab>"] = {
+          LazyVim.cmp.map({ "snippet_forward", "ai_accept" }),
+          "fallback",
+        },
+      },
+    },
+  },
+
+  {
+    "hrsh7th/nvim-cmp",
+    enabled = false,
+    version = false, -- last release is way too old
+    event = "InsertEnter",
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "saadparwaiz1/cmp_luasnip",
+      { "roobert/tailwindcss-colorizer-cmp.nvim", config = true },
+    },
+    opts = function()
+      vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
+      local cmp = require("cmp")
+      local defaults = require("cmp.config.default")()
+      return {
+        completion = {
+          completeopt = "menu,menuone,noinsert",
+        },
+        snippet = {
+          expand = function(args)
+            require("luasnip").lsp_expand(args.body)
+          end,
+        },
+        window = {
+          completion = cmp.config.window.bordered(),
+          documentation = cmp.config.window.bordered(),
+        },
+        mapping = cmp.mapping.preset.insert({
+          ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+          ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+          ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+          ["<C-f>"] = cmp.mapping.scroll_docs(4),
+          ["<C-Space>"] = cmp.mapping.complete(),
+          ["<C-e>"] = cmp.mapping.abort(),
+          ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+          ["<S-CR>"] = cmp.mapping.confirm({
+            behavior = cmp.ConfirmBehavior.Insert,
+            select = true,
+          }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        }),
+        sources = cmp.config.sources({
+          { name = "nvim_lsp" },
+          { name = "luasnip" },
+          { name = "buffer" },
+          { name = "path" },
+        }),
+        formatting = {
+          format = function(_, item)
+            local icons = require("lazyvim.config").icons.kinds
+            if icons[item.kind] then
+              item.kind = icons[item.kind] .. item.kind
+            end
+            return item
+          end,
+        },
+        experimental = {
+          ghost_text = {
+            hl_group = "CmpGhostText",
+          },
+        },
+        sorting = defaults.sorting,
+      }
+    end,
+  },
 }

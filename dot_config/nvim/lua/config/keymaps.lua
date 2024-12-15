@@ -83,8 +83,8 @@ local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 3
 map("n", "<leader>tC", function() Util.toggle("conceallevel", false, {0, conceallevel}) end, { desc = "Toggle Conceal" })
 map("n", "<leader>uC", function() Util.toggle("conceallevel", false, {0, conceallevel}) end, { desc = "Toggle Conceal" })
 
-map("n", "<leader>d", "<cmd>Dashboard<CR>" , { desc = "Dashboard" })
-map("n", "<leader>ud", "<cmd>Dashboard<CR>", { desc = "Dashboard" })
+-- map("n", "<leader>d", "<cmd>Dashboard<CR>" , { desc = "Dashboard" })
+-- map("n", "<leader>ud", "<cmd>Dashboard<CR>", { desc = "Dashboard" })
 
 if vim.lsp.inlay_hint then
   map("n", "<leader>th", function() vim.lsp.inlay_hint(0, nil) end, { desc = "Toggle Inlay Hints" })

@@ -10,3 +10,5 @@ vim.g.maplocalleader = ";"
 opt.relativenumber = false
 opt.number = false
 opt.conceallevel = 0
+
+vim.g.snacks_animate = false

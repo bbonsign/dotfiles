@@ -32,7 +32,7 @@ return {
       -- hl.LspFloatWinBorder.fg = colors.blue7
       -- hl.LspFloatWinNormal.fg = colors.blue7
       hl.LspInfoBorder.fg = colors.blue7
-      hl.CmpDocumentationBorder.fg = colors.blue7
+      -- hl.CmpDocumentationBorder.fg = colors.blue7
     end,
   },
 }

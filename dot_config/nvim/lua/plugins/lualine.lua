@@ -26,7 +26,14 @@ return {
             end,
           },
         },
-        lualine_b = { "branch" },
+        lualine_b = {
+          {
+            "branch",
+            fmt = function(str)
+              return str:sub(0, 35)
+            end,
+          },
+        },
         lualine_c = {
           {
             "diagnostics",
@@ -74,7 +81,8 @@ return {
             cond = function()
               return package.loaded["noice"] and require("noice").api.status.mode.has()
             end,
-            color = Util.ui.fg("Constant"),
+            -- color = Util.ui.fg("Constant"),
+            color = { fg = Snacks.util.color("Constant") },
           },
           {
             function()
@@ -83,12 +91,14 @@ return {
             cond = function()
               return package.loaded["dap"] and require("dap").status() ~= ""
             end,
-            color = Util.ui.fg("Debug"),
+            -- color = Util.ui.fg("Debug"),
+            color = { fg = Snacks.util.color("Debug") },
           },
           {
             require("lazy.status").updates,
             cond = require("lazy.status").has_updates,
-            color = Util.ui.fg("Special"),
+            -- color = Util.ui.fg("Special"),
+            color = { fg = Snacks.util.color("Special") },
             on_click = function()
               require("lazy").home()
             end,
