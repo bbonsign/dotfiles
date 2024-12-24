@@ -23,4 +23,9 @@ return {
         let g:VM_highlight_matches = 'underline'
       ]])
   end,
+  keys = {
+    "<C-up>",
+    "<C-down>",
+    "<C-n>",
+  },
 }

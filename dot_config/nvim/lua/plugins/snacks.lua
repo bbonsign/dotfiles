@@ -13,7 +13,12 @@ return {
     opts = {
       dashboard = {
         enabled = true,
-        preset = { header = logo },
+        preset = {
+          pick = function(cmd, opts)
+            return require("telescope.builtin")[cmd == "files" and "find_files" or cmd](opts)
+          end,
+          header = logo,
+        },
       },
       animate = { enabled = false },
       scoll = { enabled = false },

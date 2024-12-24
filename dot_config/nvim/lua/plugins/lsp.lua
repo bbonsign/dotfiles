@@ -64,58 +64,85 @@ return {
           header = "",
           prefix = "",
         },
-        servers = {
-          pyright = {
-            -- Using Ruff's import organizer
-            disableOrganizeImports = true,
-            analysis = {
-              -- Ignore all files for analysis to exclusively use Ruff for linting
-              ignore = { "*" },
+      },
+      setup = {
+        ruff_lsp = function()
+          require("lazyvim.util").lsp.on_attach(function(client, _)
+            if client.name == "ruff_lsp" then
+              -- Disable hover in favor of Pyright
+              client.server_capabilities.hoverProvider = false
+            end
+          end)
+        end,
+      },
+      servers = {
+        pyright = {
+          settings = {
+            pyright = {
+              disableOrganizeImports = true, -- Using Ruff
+              disableTaggedHints = true,
             },
-          },
-          python = {
-            analysis = {
-              -- Ignore all files for analysis to exclusively use Ruff for linting
-              ignore = { "*" },
-            },
-          },
-          emmet_ls = {
-            filetypes = {
-              "html",
-              -- "elixir",
-              "heex",
-              "typescriptreact",
-              "javascriptreact",
-              "css",
-              "sass",
-              "scss",
-              "less",
-              "javascript",
-              "typescript",
-              "markdown",
-            },
-            init_options = {
-              html = {
-                options = {
-                  -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L26
-                  ["bem.enabled"] = true,
-                },
+            python = {
+              analysis = {
+                -- ignore = { "*" }, -- Using Ruff
+                -- typeCheckingMode = "off", -- Using mypy
               },
             },
           },
-          -- tailwindcss = {
-          --   -- exclude a filetype from the default_config
-          --   -- filetypes_exclude = { "markdown" },
-          --   -- add additional filetypes to the default_config
-          --   filetypes_include = { "elixir", "heex" },
-          --   -- to fully override the default_config, change the below
-          --   -- filetypes = {}
-          -- },
-          rust_analyzer = {
-            settings = {
-              diagnostics = {
-                virtual_text = true,
+        },
+        ruff_lsp = {
+          keys = {
+            {
+              "<leader>co",
+              function()
+                vim.lsp.buf.code_action({
+                  apply = true,
+                  context = {
+                    only = { "source.organizeImports" },
+                    diagnostics = {},
+                  },
+                })
+              end,
+              desc = "Organize Imports",
+            },
+          },
+        },
+        emmet_ls = {
+          filetypes = {
+            "html",
+            -- "elixir",
+            "heex",
+            "typescriptreact",
+            "javascriptreact",
+            "css",
+            "sass",
+            "scss",
+            "less",
+            "javascript",
+            "typescript",
+            "markdown",
+          },
+          init_options = {
+            html = {
+              options = {
+                -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L26
+                ["bem.enabled"] = true,
               },
+            },
+          },
+        },
+        -- tailwindcss = {
+        --   -- exclude a filetype from the default_config
+        --   -- filetypes_exclude = { "markdown" },
+        --   -- add additional filetypes to the default_config
+        --   filetypes_include = { "elixir", "heex" },
+        --   -- to fully override the default_config, change the below
+        --   -- filetypes = {}
+        -- },
+        rust_analyzer = {
+          settings = {
+            diagnostics = {
+              virtual_text = true,
             },
           },
         },

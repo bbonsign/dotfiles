@@ -58,15 +58,20 @@ map("v", "Q", [[:norm @q<CR>]], { desc = 'Macro in "q' })
 map("i", [[<C-\>]], "λ", { desc = "Insert λ characer" })
 map("i", [[<C-j>]], "|>", { desc = "|> Pipe" })
 
--- shortcuts for ctrl-a and ctrl-e in insert/normal command mode
 map("i", "<C-e>", "<Esc>A", { desc = "End of line" })
 map("i", "<C-a>", "<Esc>I", { desc = "Beg of line" })
+map("i", "<C-b>", "<Left>", { desc = "Left" })
+map("i", "<C-f>", "<Right>", { desc = "Right" })
 map("n", "<C-e>", "$", { desc = "End of line" })
 map("n", "<C-a>", "^", { desc = "Beg of line" })
 map("v", "<C-e>", "g_", { desc = "End of line" })
 map("v", "<C-a>", "^", { desc = "Beg of line" })
 map("c", "<C-e>", "<End>", { desc = "End of line" })
 map("c", "<C-a>", "<Home>", { desc = "Beg of line" })
+map("c", "<C-b>", "<Left>", { desc = "Left" })
+map("c", "<C-f>", "<Right>", { desc = "Right" })
+
+map("n", "<leader>sk", ":FzfLua keymaps<CR>", { desc = "Search Keymaps" })
 
 -- stylua: ignore start
 -- toggle options
@@ -130,3 +135,6 @@ vim.keymap.set("n", "<RightMouse>", function()
   local options = vim.bo.ft == "NvimTree" and "nvimtree" or "default"
   require("menu").open(options, { mouse = true, border = true })
 end, {})
+
+vim.cmd([[cabbr Wa wa]])
+vim.cmd([[cabbr Wq wq]])

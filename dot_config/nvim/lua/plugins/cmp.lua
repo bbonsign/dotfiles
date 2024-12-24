@@ -1,6 +1,9 @@
 return {
   {
     "saghen/blink.cmp",
+    -- version = not vim.g.lazyvim_blink_main and "*",
+    -- build = vim.g.lazyvim_blink_main and "cargo build --release",
+    build = vim.g.lazyvim_blink_main and "nix run .#build-plugin",
     opts = {
       appearance = {
         -- sets the fallback highlight groups to nvim-cmp's highlight groups
@@ -45,7 +48,8 @@ return {
       },
       completion = {
         list = {
-          selection = "manual",
+          selection = "auto_insert",
+          -- selection = "manual",
         },
         accept = {
           -- experimental auto-brackets support
@@ -77,18 +81,43 @@ return {
         -- with blink.compat
         compat = {},
         default = { "lsp", "path", "snippets", "buffer" },
-        cmdline = {},
+        -- By default, we choose providers for the cmdline based on the current cmdtype
+        -- You may disable cmdline completions by replacing this with an empty table
+        cmdline = function()
+          local type = vim.fn.getcmdtype()
+          -- Search forward and backward
+          if type == "/" or type == "?" then
+            return { "buffer" }
+          end
+          -- Commands
+          if type == ":" then
+            return { "cmdline" }
+          end
+          return {}
+        end,
       },
       keymap = {
         preset = "enter",
-        -- ["<Esc>"] = { "hide", "fallback" },
+        ["<Esc>"] = {},
         ["<C-c>"] = { "cancel", "fallback" },
+        ["<Up>"] = { "select_prev", "fallback" },
+        ["<Down>"] = { "select_next", "fallback" },
         ["<C-k>"] = { "select_prev", "fallback" },
         ["<C-j>"] = { "select_next", "fallback" },
         ["<C-y>"] = { "select_and_accept" },
         ["<Tab>"] = {
           LazyVim.cmp.map({ "snippet_forward", "ai_accept" }),
           "fallback",
+        },
+        cmdline = {
+          preset = "enter",
+          -- ["<Esc>"] = { "cancel", "fallback" },
+          ["<C-c>"] = { "cancel", "fallback" },
+          ["<Up>"] = { "select_prev", "fallback" },
+          ["<Down>"] = { "select_next", "fallback" },
+          ["<C-k>"] = { "select_prev", "fallback" },
+          ["<C-j>"] = { "select_next", "fallback" },
+          ["<C-y>"] = { "select_and_accept" },
         },
       },
     },

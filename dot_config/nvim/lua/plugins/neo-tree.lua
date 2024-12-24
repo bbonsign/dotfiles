@@ -8,7 +8,7 @@ return {
   keys = {
     {
       "<leader>e",
-      ":Neotree toggle float<CR>",
+      ":Neotree toggle float reveal<CR>",
       silent = true,
       desc = "Float File Explorer",
     },
