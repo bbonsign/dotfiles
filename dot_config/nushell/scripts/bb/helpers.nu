@@ -61,14 +61,14 @@ export def ":search" [query: string = ""] {
   }
 }
 
-export def "fg status" [] -> string {
+export def "fg status" []  {
   try {
     git rev-parse --git-dir e> (std null-device)
   } catch {
     print "Not in a git repo";
     return ""
   }
-  def parse-status [status_line: string] string {
+  def parse-status [status_line: string]  {
     $status_line | split row ' ' | last
   }
   let preview_cmd = "git diff --color {-1} | delta --config ~/.config/git/config"
@@ -93,7 +93,7 @@ export def "fg status" [] -> string {
 export def "fg branches" [
   query: string = ""
   --all
-] -> string {
+] {
   try {
     git rev-parse --git-dir o+e> (std null-device)
   } catch {
