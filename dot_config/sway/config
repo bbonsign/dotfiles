@@ -9,7 +9,7 @@ set {
   $down  j
   $up    k
   $right l
-  $term kitty
+  $term $HOME/.local/bin/kitty
   # $term ghostty
   # $menu should be dmenu-like
   $menu wmenu
