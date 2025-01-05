@@ -51,16 +51,16 @@
     "format": "{name} {icon}",
     "format-icons": {
       "locked": "",
-      "unlocked": ""
+      "unlocked": " "
     }
   },
   "sway/mode": {
     "format": "<span style=\"italic\">{}</span>"
   },
   "sway/scratchpad": {
-    "format": "{icon} {count}",
+    "format": "{icon}  {count}",
     "show-empty": false,
-    "format-icons": ["", ""],
+    "format-icons": ["", " "],
     "tooltip": true,
     "tooltip-format": "{app}: {title}"
   },
@@ -93,8 +93,8 @@
   "idle_inhibitor": {
     "format": "{icon}",
     "format-icons": {
-      "activated": "",
-      "deactivated": ""
+      "activated": " ",
+      "deactivated": " "
     }
   },
   "tray": {
@@ -110,11 +110,11 @@
     // "on-click": "swaymsg exec \\$calendar"
   },
   "cpu": {
-    "format": "{usage}% ",
+    "format": "{usage}%  ",
     "tooltip": false
   },
   "memory": {
-    "format": "{}% "
+    "format": "{}%  "
   },
   "temperature": {
     // "thermal-zone": 2,
@@ -127,7 +127,7 @@
   "backlight": {
     // "device": "acpi_video1",
     "format": "{percent}% {icon}",
-    "format-icons": ["", "", "", "", "", "", "", "", ""]
+    "format-icons": [" ", " ", " ", " ", " ", " ", " ", " ", " "]
   },
   "battery": {
     "states": {
@@ -136,8 +136,8 @@
       "critical": 15
     },
     "format": "{capacity}% {icon}",
-    "format-charging": "{capacity}% ",
-    "format-plugged": "{capacity}% ",
+    // "format-charging": "{capacity}%  ",
+    "format-plugged": "{capacity}%  ",
     "format-alt": "{time} {icon}",
     // "format-good": "", // An empty format will hide the module
     // "format-full": "",
@@ -149,9 +149,9 @@
   "network": {
     // "interface": "wlp2*", // (Optional) To force the use of this interface
     "format-wifi": "{essid} ({signalStrength}%)  ",
-    "format-ethernet": "{ipaddr}/{cidr}  ",
-    "tooltip-format": "{ifname} via {gwaddr}  ",
-    "format-linked": "{ifname} (No IP)  ",
+    "format-ethernet": "{ipaddr}/{cidr} 󰈀 ",
+    "tooltip-format": "{ifname} via {gwaddr}  ",
+    "format-linked": "{ifname} (No IP) ? ",
     "format-disconnected": "Disconnected ⚠ ",
     "format-alt": "{ifname}: {ipaddr}/{cidr}"
   },
@@ -164,9 +164,9 @@
     "format-source": " {volume}% ",
     "format-source-muted": " ",
     "format-icons": {
-      "headphone": " ",
-      "hands-free": " ",
-      "headset": " ",
+      "headphone": "󰋋 ",
+      "hands-free": "󰋎  ",
+      "headset": "󰋎 ",
       "phone": " ",
       "portable": " ",
       "car": " ",
