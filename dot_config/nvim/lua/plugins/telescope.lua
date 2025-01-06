@@ -63,6 +63,11 @@ return {
       ":Telescope git_files<CR>",
       desc = "Telescope git_files",
     },
+    {
+      "<leader>.",
+      ":Telescope buffers<CR>",
+      desc = "Telescope buffers",
+    },
   },
 
   opts = {

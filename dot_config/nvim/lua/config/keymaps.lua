@@ -30,7 +30,7 @@ vim.keymap.del("n", "<C-l>")
 -- vim.keymap.del("n", "<A-k>")
 -- vim.keymap.del("n", "<A-l>")
 
-map("n", "<leader>.", "<NOP>", { desc = "Disabled" })
+map("n", "<leader>.", "<cmd>Telescope buffers<cr>", { desc = "Disabled" })
 
 map("n", "<leader>L", "<cmd>Lazy<cr>", { desc = "Lazy" })
 
