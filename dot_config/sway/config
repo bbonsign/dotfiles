@@ -2,19 +2,24 @@
 
 ### Variables
 set {
-# Mod4 for logo key. Use Mod1 for Alt.
+  # Mod4 for logo key. Use Mod1 for Alt.
   $alt Mod1
   $mod Mod4
   $left  h
   $down  j
   $up    k
   $right l
+
+  $browser vivaldi
+  $slack flatpak run com.slack.Slack
   $term $HOME/.local/bin/kitty
   # $term ghostty
+
   # $menu should be dmenu-like
   $menu wmenu
   $launcher fuzzel --show-actions --lines 20 --width 80
   $window_chooser rofi -show window
+
   # $toggle_bar bar mode toggle
   $toggle_bar exec pkill -SIGUSR1 waybar
   $reload_bar exec pkill -SIGUSR2 waybar
@@ -37,7 +42,7 @@ set {
 font pango: FiraCode Nerd Font 10
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
-default_border pixel 2
+default_border pixel 3
 default_floating_border normal
 
 hide_edge_borders smart

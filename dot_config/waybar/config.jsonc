@@ -33,15 +33,15 @@
   "sway/workspaces": {
     "disable-scroll": true,
     "all-outputs": false,
-    "format": " {name}{icon} ",
+    "format": " {name}{icon}",
     "format-icons": {
-      // "1": "",
-      // "2": "",
-      // "3": "",
-      // "4": "",
-      // "5": "",
-      "urgent": "",
-      // "focused": "",
+      // "1": " ",
+      // "2": " ",
+      // "3": " ",
+      // "4": " ",
+      // "5": " ",
+      "urgent": " ",
+      // "focused": " ",
       "default": " "
     }
   },
