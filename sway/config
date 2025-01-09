@@ -12,8 +12,8 @@ set {
 
   $browser vivaldi
   $slack flatpak run com.slack.Slack
-  $term $HOME/.local/bin/kitty
-  # $term ghostty
+  # $term $HOME/.local/bin/kitty
+  $term ghostty
 
   # $menu should be dmenu-like
   $menu wmenu
