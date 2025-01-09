@@ -8,6 +8,7 @@
 (defcfg
   process-unmapped-keys  yes
   log-layer-changes      no
+  ;; device will depend on the system
   linux-dev /dev/input/event4
 )
 
