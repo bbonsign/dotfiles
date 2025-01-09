@@ -1,9 +1,9 @@
 return {
   {
     "saghen/blink.cmp",
-    -- version = not vim.g.lazyvim_blink_main and "*",
+    version = not vim.g.lazyvim_blink_main and "*",
     -- build = vim.g.lazyvim_blink_main and "cargo build --release",
-    build = vim.g.lazyvim_blink_main and "nix run .#build-plugin",
+    -- build = vim.g.lazyvim_blink_main and "nix run .#build-plugin",
     opts = {
       appearance = {
         -- sets the fallback highlight groups to nvim-cmp's highlight groups
