@@ -81,3 +81,14 @@ keybind = ctrl+x>v=new_split:right
 keybind = ctrl+x>z=toggle_split_zoom
 keybind = ctrl+x>shift+[=move_tab:-1
 keybind = ctrl+x>shift+]=move_tab:+1
+
+# Unbind these so they are passed to tmux
+keybind = alt+1=unbind
+keybind = alt+2=unbind
+keybind = alt+3=unbind
+keybind = alt+4=unbind
+keybind = alt+5=unbind
+keybind = alt+6=unbind
+keybind = alt+7=unbind
+keybind = alt+8=unbind
+keybind = alt+9=unbind
