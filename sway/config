@@ -110,6 +110,7 @@ include "${XDG_CONFIG_HOME:-$HOME/.config}/sway/binds-gaps.conf
 include "${XDG_CONFIG_HOME:-$HOME/.config}/sway/binds-normal.conf
 include "${XDG_CONFIG_HOME:-$HOME/.config}/sway/binds-general.conf
 include "${XDG_CONFIG_HOME:-$HOME/.config}/sway/rules.conf
+include "${XDG_CONFIG_HOME:-$HOME/.config}/sway/swayidle.conf
 
 exec {
   blueman-applet
