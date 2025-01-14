@@ -66,7 +66,6 @@ client.placeholder      $black  #0c0c0c  $fg     #000000   #0c0c0c
 client.background       $black
 
 ### Output configuration
-# Default wallpaper (more resolutions are available in /run/current-system/sw/share/backgrounds/sway/)
 output {
   *      bg $HOME/oiolosse/home-manager/_mixins/wallpapers/stsci-h-p1821a-m-1699x2000.png fill
   # eDP-1 is laptop screen
