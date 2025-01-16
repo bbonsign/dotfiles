@@ -40,7 +40,8 @@
       // "3": " ",
       // "4": " ",
       // "5": " ",
-      "urgent": " ",
+
+      "urgent": " <span foreground='#eb4d4b'><sup> </sup></span>", //"  ",
       // "focused": " ",
       "default": " "
     }
@@ -137,7 +138,7 @@
     },
     "format": "{capacity}% {icon} ",
     // "format-charging": "{capacity}%  ",
-    "format-charging": "{capacity}% {icon} ",
+    "format-charging": "{capacity}% {icon}  ",
     "format-alt": "{time} {icon}",
     // "format-good": "", // An empty format will hide the module
     // "format-full": "",
