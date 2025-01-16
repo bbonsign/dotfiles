@@ -39,6 +39,20 @@ return {
         end,
         desc = "Dashboard",
       },
+      {
+        "<leader>tn",
+        function()
+          Snacks.notifier.hide()
+        end,
+        desc = "Dismiss all Notifications",
+      },
+      {
+        "<leader><BS>",
+        function()
+          Snacks.notifier.hide()
+        end,
+        desc = "Dismiss all Notifications",
+      },
     },
   },
 }

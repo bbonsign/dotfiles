@@ -56,7 +56,7 @@ map("n", "Q", "@q", { desc = 'Macro in "q' })
 map("v", "Q", [[:norm @q<CR>]], { desc = 'Macro in "q' })
 
 map("i", [[<C-\>]], "λ", { desc = "Insert λ characer" })
-map("i", [[<C-j>]], "|>", { desc = "|> Pipe" })
+-- map("i", [[<C-j>]], "|>", { desc = "|> Pipe" })
 
 map("i", "<C-e>", "<Esc>A", { desc = "End of line" })
 map("i", "<C-a>", "<Esc>I", { desc = "Beg of line" })
