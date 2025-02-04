@@ -20,7 +20,7 @@ end
 
 vim.keymap.del("n", "<S-h>")
 vim.keymap.del("n", "<S-l>")
-vim.keymap.del("n", "<leader>l")
+vim.keymap.del("n", "<Leader>l")
 vim.keymap.del("n", "<C-h>")
 vim.keymap.del("n", "<C-j>")
 vim.keymap.del("n", "<C-k>")
@@ -30,18 +30,21 @@ vim.keymap.del("n", "<C-l>")
 -- vim.keymap.del("n", "<A-k>")
 -- vim.keymap.del("n", "<A-l>")
 
-map("n", "<leader>.", "<cmd>Telescope buffers<cr>", { desc = "Disabled" })
+-- Overrides <C-I> too
+-- map("n", "<Tab>", "za", { desc = "Toggle Fold" })
 
-map("n", "<leader>L", "<cmd>Lazy<cr>", { desc = "Lazy" })
+map("n", "<Leader>.", "<cmd>Telescope buffers<cr>", { desc = "Disabled" })
+
+map("n", "<Leader>L", "<cmd>Lazy<cr>", { desc = "Lazy" })
 
 -- Use the blackhole register "_ by default for x
 map({ "n", "v" }, "x", '"_x')
 
--- To complement the default <c-y> for scrolling text up/down
+-- To complement the default <C-y> for scrolling text up/down
 -- with out moving cursor
-map("n", "<c-h>", "<c-e>")
-map("n", "<c-j>", "<c-e>")
-map("n", "<c-k>", "<c-y>")
+map("n", "<C-h>", "<C-e>")
+map("n", "<C-j>", "<C-e>")
+map("n", "<C-k>", "<C-y>")
 
 -- Center line when jumping to search results
 map("n", "n", "nzz")
@@ -71,58 +74,46 @@ map("c", "<C-a>", "<Home>", { desc = "Beg of line" })
 map("c", "<C-b>", "<Left>", { desc = "Left" })
 map("c", "<C-f>", "<Right>", { desc = "Right" })
 
-map("n", "<leader>sk", ":FzfLua keymaps<CR>", { desc = "Search Keymaps" })
+map("n", "<Leader>sk", ":FzfLua keymaps<CR>", { desc = "Search Keymaps" })
 
--- stylua: ignore start
 -- toggle options
--- Taken from the default <leader>u prefixed keymaps, to also have <leader>t versions
-map("n", "<leader>tf", require("lazyvim.util").format.toggle, { desc = "Toggle format on Save" })
-map("n", "<leader>ts", ":set spell!<CR>", { desc = "Toggle Spelling" })
-map("n", "<leader>tw", function() Util.toggle("wrap") end, { desc = "Toggle Word Wrap" })
-map("n", "<leader>tl", function() Util.toggle("relativenumber", true) Util.toggle("number") end, { desc = "Toggle Line Numbers" })
--- map("n", "<leader>td", Util.toggle.diagnostics, { desc = "Toggle Diagnostics" })
-map("n", "<leader>tc", ":set cursorline!<CR>", { desc = "Toggle cursorline" })
-map("n", "<leader>uc", ":set cursorline!<CR>", { desc = "Toggle cursorline" })
+-- map("n", "<Leader>tc", ":set cursorline!<CR>", { desc = "Toggle cursorline" })
+map("n", "<Leader>uc", ":set cursorline!<CR>", { desc = "Toggle cursorline" })
 
-local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 3
-map("n", "<leader>tC", function() Util.toggle("conceallevel", false, {0, conceallevel}) end, { desc = "Toggle Conceal" })
-map("n", "<leader>uC", function() Util.toggle("conceallevel", false, {0, conceallevel}) end, { desc = "Toggle Conceal" })
+-- local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 3
+-- map("n", "<Leader>tC", function() Util.toggle("conceallevel", false, {0, conceallevel}) end, { desc = "Toggle Conceal" })
+-- map("n", "<Leader>uC", function() Util.toggle("conceallevel", false, {0, conceallevel}) end, { desc = "Toggle Conceal" })
 
--- map("n", "<leader>d", "<cmd>Dashboard<CR>" , { desc = "Dashboard" })
--- map("n", "<leader>ud", "<cmd>Dashboard<CR>", { desc = "Dashboard" })
+-- map("n", "<Leader>d", "<cmd>Dashboard<CR>" , { desc = "Dashboard" })
+-- map("n", "<Leader>ud", "<cmd>Dashboard<CR>", { desc = "Dashboard" })
 
-if vim.lsp.inlay_hint then
-  map("n", "<leader>th", function() vim.lsp.inlay_hint(0, nil) end, { desc = "Toggle Inlay Hints" })
-end
--- stylua: ignore end
+map("n", "<Leader>a:", "A;<Esc>", { desc = "Append ; to line" })
 
-map("n", "<leader>a:", "A;<Esc>", { desc = "Append ; to line" })
+map("n", "<Leader>bb", ":Telescope buffers<CR>", { desc = "Telescope buffers" })
 
-map("n", "<leader>bb", ":Telescope buffers<CR>", { desc = "Telescope buffers" })
+map("n", "<Leader>fs", ":w<CR>", { desc = "Write file" })
+map("n", "<Leader>fw", ":w<CR>", { desc = "Write file" })
+map("n", "<Leader>fR", ":earlier 1f<CR>", { desc = "Revert to last write" })
 
-map("n", "<leader>fs", ":w<CR>", { desc = "Write file" })
-map("n", "<leader>fw", ":w<CR>", { desc = "Write file" })
-map("n", "<leader>fR", ":earlier 1f<CR>", { desc = "Revert to last write" })
-
-map("n", "<leader>w=", "<C-w>=", { desc = "Balance splits" })
-map("n", "<leader>wc", "<C-w>c", { desc = "Close window" })
-map("n", "<leader>wH", "<C-w>H", { desc = "Move left" })
-map("n", "<leader>wh", "<C-w>h", { desc = "Change left" })
-map("n", "<leader>wJ", "<C-w>J", { desc = "Move down" })
-map("n", "<leader>wj", "<C-w>j", { desc = "Change down" })
-map("n", "<leader>wK", "<C-w>K", { desc = "Move up" })
-map("n", "<leader>wk", "<C-w>k", { desc = "Change up" })
-map("n", "<leader>wL", "<C-w>L", { desc = "Move right" })
-map("n", "<leader>wl", "<C-w>l", { desc = "Change right" })
-map("n", "<leader>wo", "<C-w>o", { desc = "Only window" })
-map("n", "<leader>wq", "<C-w>c", { desc = "Close window" })
-map("n", "<leader>wR", "<C-w>R", { desc = "Rotate windows <-" })
-map("n", "<leader>wr", "<C-w>r", { desc = "Rotate windows ->" })
-map("n", "<leader>ws", ":split<CR>", { desc = "Horizontal split" })
-map("n", "<leader>wt", ":tab split<CR>", { desc = "New tab w/ current buf" })
-map("n", "<leader>wv", ":vsplit<CR>", { desc = "Veritcal split" })
-map("n", "<leader>wW", "<C-w>W", { desc = "Other window <-" })
-map("n", "<leader>ww", "<C-w>w", { desc = "Other window ->" })
+map("n", "<Leader>w=", "<C-w>=", { desc = "Balance splits" })
+map("n", "<Leader>wc", "<C-w>c", { desc = "Close window" })
+map("n", "<Leader>wH", "<C-w>H", { desc = "Move left" })
+map("n", "<Leader>wh", "<C-w>h", { desc = "Change left" })
+map("n", "<Leader>wJ", "<C-w>J", { desc = "Move down" })
+map("n", "<Leader>wj", "<C-w>j", { desc = "Change down" })
+map("n", "<Leader>wK", "<C-w>K", { desc = "Move up" })
+map("n", "<Leader>wk", "<C-w>k", { desc = "Change up" })
+map("n", "<Leader>wL", "<C-w>L", { desc = "Move right" })
+map("n", "<Leader>wl", "<C-w>l", { desc = "Change right" })
+map("n", "<Leader>wo", "<C-w>o", { desc = "Only window" })
+map("n", "<Leader>wq", "<C-w>c", { desc = "Close window" })
+map("n", "<Leader>wR", "<C-w>R", { desc = "Rotate windows <-" })
+map("n", "<Leader>wr", "<C-w>r", { desc = "Rotate windows ->" })
+map("n", "<Leader>ws", ":split<CR>", { desc = "Horizontal split" })
+map("n", "<Leader>wt", ":tab split<CR>", { desc = "New tab w/ current buf" })
+map("n", "<Leader>wv", ":vsplit<CR>", { desc = "Veritcal split" })
+map("n", "<Leader>wW", "<C-w>W", { desc = "Other window <-" })
+map("n", "<Leader>ww", "<C-w>w", { desc = "Other window ->" })
 
 -- https://github.com/nvzone/menu
 vim.keymap.set("n", "<C-t>", function()

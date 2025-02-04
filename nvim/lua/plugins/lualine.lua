@@ -16,7 +16,8 @@ return {
         lualine_a = {
           {
             function()
-              return "  "
+              -- return "  "
+              return "  "
             end,
             padding = { left = 0, right = 0 },
             color = {},

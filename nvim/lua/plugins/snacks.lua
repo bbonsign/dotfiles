@@ -26,7 +26,7 @@ return {
     },
     keys = {
       {
-        "<leader>d",
+        "<leader>D",
         function()
           Snacks.dashboard()
         end,
@@ -38,13 +38,6 @@ return {
           Snacks.dashboard()
         end,
         desc = "Dashboard",
-      },
-      {
-        "<leader>tn",
-        function()
-          Snacks.notifier.hide()
-        end,
-        desc = "Dismiss all Notifications",
       },
       {
         "<leader><BS>",

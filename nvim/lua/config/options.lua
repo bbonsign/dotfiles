@@ -23,3 +23,5 @@ vim.g.lazyvim_picker = "telescope" -- or "fzf"
 -- you need to have a working rust toolchain to build the plugin
 -- in this case.
 -- vim.g.lazyvim_blink_main = true
+
+-- vim.opt.foldtext = "v:lua.require'bb.foldtext'.foldtext()"

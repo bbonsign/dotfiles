@@ -17,6 +17,7 @@ return {
   --  Color picker
   {
     "nvzone/minty",
+    enabled = false,
     lazy = true,
     cmd = { "Shades", "Huefy" },
     dependencies = { "nvzone/volt" },

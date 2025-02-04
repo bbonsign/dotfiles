@@ -12,6 +12,12 @@ return {
       end,
     },
     {
+      "nvim-telescope/telescope-dap.nvim",
+      config = function()
+        require("telescope").load_extension("dap")
+      end,
+    },
+    {
       "benfowler/telescope-luasnip.nvim",
       config = function()
         require("telescope").load_extension("luasnip")
@@ -19,6 +25,11 @@ return {
     },
   },
   keys = {
+    {
+      "<leader>:",
+      ":Telescope commands<CR>",
+      desc = "Telescope commands",
+    },
     {
       "<leader>/",
       function()
@@ -54,6 +65,11 @@ return {
       desc = "Telescope resume",
     },
     {
+      '<leader>"',
+      ":Telescope registers<CR>",
+      desc = "Telescope",
+    },
+    {
       "<leader>g/",
       ":Telescope git_status<CR>",
       desc = "Telescope git_status",
@@ -67,6 +83,26 @@ return {
       "<leader>.",
       ":Telescope buffers<CR>",
       desc = "Telescope buffers",
+    },
+    {
+      "<leader>d/b",
+      ":Telescope dap list_breakpoints<CR>",
+      desc = "Telescope breakpoints",
+    },
+    {
+      "<leader>d/v",
+      ":Telescope dap variables<CR>",
+      desc = "Telescope variables",
+    },
+    {
+      "<leader>d/f",
+      ":Telescope dap frames<CR>",
+      desc = "Telescope frames",
+    },
+    {
+      "<leader>d/:",
+      ":Telescope dap commands<CR>",
+      desc = "Telescope dap commands",
     },
   },
 
