@@ -17,6 +17,11 @@ return {
         desc = "Run to Cursor",
       },
       {
+        "<leader>dw",
+        "<nop>",
+        desc = "disabled",
+      },
+      {
         "<leader>dfb",
         function()
           require("dapui").float_element("breakpoints", { enter = true })
@@ -88,7 +93,7 @@ return {
               size = 0.25,
             },
           },
-          position = "left",
+          position = "right",
           size = 60,
         },
         -- {
@@ -120,6 +125,7 @@ return {
       },
     },
   },
+
   {
     "theHamsta/nvim-dap-virtual-text",
     keys = {

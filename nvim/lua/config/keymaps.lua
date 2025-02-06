@@ -2,8 +2,6 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
-local Util = require("lazyvim.util")
-
 local function map(mode, lhs, rhs, opts)
   local keys = require("lazy.core.handler").handlers.keys
   ---@cast keys LazyKeysHandler
@@ -86,6 +84,29 @@ map("n", "<Leader>uc", ":set cursorline!<CR>", { desc = "Toggle cursorline" })
 
 -- map("n", "<Leader>d", "<cmd>Dashboard<CR>" , { desc = "Dashboard" })
 -- map("n", "<Leader>ud", "<cmd>Dashboard<CR>", { desc = "Dashboard" })
+
+map("n", "<Leader>uS", function()
+  if vim.o.laststatus == 3 then
+    vim.o.laststatus = 0
+  else
+    vim.o.laststatus = 3
+  end
+end, { desc = "Toggle Statusline" })
+
+map("n", "<Leader>ut", function()
+  local lualine = require("lualine")
+  if vim.o.tabline == "" then
+    lualine.hide({
+      place = { "tabline" },
+      unhide = true,
+    })
+  else
+    lualine.hide({
+      place = { "tabline" },
+      unhide = false,
+    })
+  end
+end, { desc = "Toggle Tabline" })
 
 map("n", "<Leader>a:", "A;<Esc>", { desc = "Append ; to line" })
 

@@ -11,6 +11,18 @@ return {
     -- priority = 1000,
     -- lazy = false,
     opts = {
+      styles = {
+        blame_line = {
+          width = 0.9,
+          height = 0.6,
+          border = "rounded",
+          title = " Git Blame ",
+          title_pos = "center",
+          ft = "git",
+        },
+      },
+      animate = { enabled = false },
+      bigfile = { enabled = true },
       dashboard = {
         enabled = true,
         preset = {
@@ -20,9 +32,11 @@ return {
           header = logo,
         },
       },
-      animate = { enabled = false },
-      scoll = { enabled = false },
+      debug = { enabled = true },
+      git = { enabled = true },
       indent = { enabled = false },
+      lazygit = { enabled = true },
+      scoll = { enabled = false },
     },
     keys = {
       {
@@ -45,6 +59,20 @@ return {
           Snacks.notifier.hide()
         end,
         desc = "Dismiss all Notifications",
+      },
+      {
+        "<leader>gb",
+        function()
+          Snacks.git.blame_line()
+        end,
+        desc = "Blame Line",
+      },
+      {
+        "<leader>gL",
+        function()
+          Snacks.lazygit.log_file()
+        end,
+        desc = "Lazygit Log File",
       },
     },
   },

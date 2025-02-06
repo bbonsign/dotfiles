@@ -75,6 +75,11 @@ return {
       desc = "Telescope git_status",
     },
     {
+      "<leader>gc",
+      ":Telescope git_bcommits<CR>",
+      desc = "Telescope Buffer Commits",
+    },
+    {
       "<leader>gf",
       ":Telescope git_files<CR>",
       desc = "Telescope git_files",
