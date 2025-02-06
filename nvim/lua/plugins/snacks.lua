@@ -37,6 +37,7 @@ return {
       indent = { enabled = false },
       lazygit = { enabled = true },
       scoll = { enabled = false },
+      toggle = { enabled = true },
     },
     keys = {
       {

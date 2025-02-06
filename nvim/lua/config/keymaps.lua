@@ -78,35 +78,19 @@ map("n", "<Leader>sk", ":FzfLua keymaps<CR>", { desc = "Search Keymaps" })
 -- map("n", "<Leader>tc", ":set cursorline!<CR>", { desc = "Toggle cursorline" })
 map("n", "<Leader>uc", ":set cursorline!<CR>", { desc = "Toggle cursorline" })
 
--- local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 3
--- map("n", "<Leader>tC", function() Util.toggle("conceallevel", false, {0, conceallevel}) end, { desc = "Toggle Conceal" })
--- map("n", "<Leader>uC", function() Util.toggle("conceallevel", false, {0, conceallevel}) end, { desc = "Toggle Conceal" })
+Snacks.toggle
+  .option("showtabline", { off = 0, on = vim.o.showtabline > 0 and vim.o.showtabline or 2, name = "Tabline", global = true })
+  :map("<leader>ut")
 
--- map("n", "<Leader>d", "<cmd>Dashboard<CR>" , { desc = "Dashboard" })
--- map("n", "<Leader>ud", "<cmd>Dashboard<CR>", { desc = "Dashboard" })
-
-map("n", "<Leader>uS", function()
-  if vim.o.laststatus == 3 then
-    vim.o.laststatus = 0
-  else
-    vim.o.laststatus = 3
-  end
-end, { desc = "Toggle Statusline" })
-
-map("n", "<Leader>ut", function()
-  local lualine = require("lualine")
-  if vim.o.tabline == "" then
-    lualine.hide({
-      place = { "tabline" },
-      unhide = true,
-    })
-  else
-    lualine.hide({
-      place = { "tabline" },
-      unhide = false,
-    })
-  end
-end, { desc = "Toggle Tabline" })
+Snacks.toggle({
+  name = "Statusline",
+  get = function()
+    return vim.o.laststatus == 3
+  end,
+  set = function(state)
+    vim.o.laststatus = state and 3 or 0
+  end,
+}):map("<leader>uS")
 
 map("n", "<Leader>a:", "A;<Esc>", { desc = "Append ; to line" })
 
