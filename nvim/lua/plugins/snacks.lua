@@ -152,6 +152,11 @@ return {
         desc = "Disabled",
       },
       {
+        "<leader>uS",
+        "<nop>",
+        desc = "Disabled",
+      },
+      {
         "<leader>ud",
         function()
           Snacks.dashboard()
@@ -172,24 +177,6 @@ return {
             Snacks.debug.backtrace()
           end
           vim.print = _G.dd -- Override print to use snacks for `:=` command
-
-          -- toggle options
-          Snacks.toggle
-            .option(
-              "showtabline",
-              { off = 0, on = vim.o.showtabline > 0 and vim.o.showtabline or 2, name = "Tabline", global = true }
-            )
-            :map("<leader>ut")
-
-          Snacks.toggle({
-            name = "Statusline",
-            get = function()
-              return vim.o.laststatus == 3
-            end,
-            set = function(state)
-              vim.o.laststatus = state and 3 or 0
-            end,
-          }):map("<leader>uS")
         end,
       })
     end,

@@ -67,9 +67,18 @@ vim.keymap.set("c", "<C-f>", "<Right>", { desc = "Right" })
 -- -- toggle options
 -- vim.keymap.set("n", "<Leader>uc", ":set cursorline!<CR>", { desc = "Toggle cursorline" })
 Snacks.toggle.option("cursorline", { name = "Cursorline", global = true }):map("<Leader>uc")
--- Snacks.toggle
---   .option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 })
---   :map("<leader>uC")
+
+Snacks.toggle
+  .option("showtabline", { off = 0, on = vim.o.showtabline > 0 and vim.o.showtabline or 2, name = "Tabline", global = true })
+  :map("<leader>ut")
+
+vim.keymap.set("n", "<Leader>uS", function()
+  if vim.o.laststatus == 3 then
+    vim.o.laststatus = 0
+  else
+    vim.o.laststatus = 3
+  end
+end, { desc = "Toggle Statusline" })
 
 vim.keymap.set("n", "<Leader>a:", "A;<Esc>", { desc = "Append ; to line" })
 
