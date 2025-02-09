@@ -17,6 +17,13 @@ return {
         desc = "Run to Cursor",
       },
       {
+        "<leader>dg",
+        function()
+          require("dap").focus_frame()
+        end,
+        desc = "Goto frame",
+      },
+      {
         "<leader>dw",
         "<nop>",
         desc = "disabled",

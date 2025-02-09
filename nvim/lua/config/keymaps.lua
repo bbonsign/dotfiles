@@ -2,20 +2,6 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
-local function map(mode, lhs, rhs, opts)
-  local keys = require("lazy.core.handler").handlers.keys
-  ---@cast keys LazyKeysHandler
-  -- do not create the keymap if a lazy keys handler exists
-  if not keys.active[keys.parse({ lhs, mode = mode }).id] then
-    opts = opts or {}
-    opts.silent = opts.silent ~= false
-    if opts.remap and not vim.g.vscode then
-      opts.remap = nil
-    end
-    vim.keymap.set(mode, lhs, rhs, opts)
-  end
-end
-
 vim.keymap.del("n", "<S-h>")
 vim.keymap.del("n", "<S-l>")
 vim.keymap.del("n", "<Leader>l")
@@ -29,96 +15,87 @@ vim.keymap.del("n", "<C-l>")
 -- vim.keymap.del("n", "<A-l>")
 
 -- Overrides <C-I> too
--- map("n", "<Tab>", "za", { desc = "Toggle Fold" })
+-- vim.keymap.set("n", "<Tab>", "za", { desc = "Toggle Fold" })
 
-map("n", "<Leader>.", "<cmd>Telescope buffers<cr>", { desc = "Disabled" })
-
-map("n", "<Leader>L", "<cmd>Lazy<cr>", { desc = "Lazy" })
+vim.keymap.set("n", "<Leader>LL", "<cmd>Lazy<CR>", { desc = "Lazy" })
+vim.keymap.set("n", "<leader>LN", function()
+  LazyVim.news.changelog()
+end, { desc = "LazyVim Changelog" })
 
 -- Use the blackhole register "_ by default for x
-map({ "n", "v" }, "x", '"_x')
+vim.keymap.set({ "n", "v" }, "x", '"_x')
 
 -- To complement the default <C-y> for scrolling text up/down
 -- with out moving cursor
-map("n", "<C-h>", "<C-e>")
-map("n", "<C-j>", "<C-e>")
-map("n", "<C-k>", "<C-y>")
+vim.keymap.set("n", "<C-h>", "<C-e>")
+vim.keymap.set("n", "<C-j>", "<C-e>")
+vim.keymap.set("n", "<C-k>", "<C-y>")
+
+vim.keymap.set("n", "<Leader>=", ":.lua<CR>", { desc = "Lua eval" })
+vim.keymap.set("n", "g=", ":.lua<CR>", { desc = "Lua eval" })
+vim.keymap.set("v", "<Leader>=", ":lua<CR>", { desc = "Lua eval" })
+vim.keymap.set("v", "=", ":lua<CR>", { desc = "Lua eval" })
 
 -- Center line when jumping to search results
-map("n", "n", "nzz")
-map("n", "N", "Nzz")
+vim.keymap.set("n", "n", "nzz")
+vim.keymap.set("n", "N", "Nzz")
+-- search the visual selection
+vim.keymap.set("x", "<CR>", '""y/<C-r>"<CR>N', { desc = "Search word under cursor" })
+vim.keymap.set("n", "<CR>", "*N", { desc = "Search word under cursor" })
 
-map({ "n", "v" }, "g.", "g`.", { desc = "Goto last edit" })
+vim.keymap.set({ "n", "v" }, "g.", "g`.", { desc = "Goto last edit" })
 
-map({ "n", "x" }, "gw", "*N", { desc = "Search word under cursor" })
-map({ "n", "x" }, "<CR>", "*N", { desc = "Search word under cursor" })
+vim.keymap.set("n", "Q", "@q", { desc = 'Macro in "q' })
+vim.keymap.set("v", "Q", [[:norm @q<CR>]], { desc = 'Macro in "q' })
 
-map("n", "Q", "@q", { desc = 'Macro in "q' })
-map("v", "Q", [[:norm @q<CR>]], { desc = 'Macro in "q' })
+vim.keymap.set("i", [[<C-\>]], "λ", { desc = "Insert λ characer" })
+-- vim.keymap.set("i", [[<C-j>]], "|>", { desc = "|> Pipe" })
 
-map("i", [[<C-\>]], "λ", { desc = "Insert λ characer" })
--- map("i", [[<C-j>]], "|>", { desc = "|> Pipe" })
+vim.keymap.set("i", "<C-e>", "<Esc>A", { desc = "End of line" })
+vim.keymap.set("i", "<C-a>", "<Esc>I", { desc = "Beg of line" })
+vim.keymap.set("i", "<C-b>", "<Left>", { desc = "Left" })
+vim.keymap.set("i", "<C-f>", "<Right>", { desc = "Right" })
+vim.keymap.set("n", "<C-e>", "$", { desc = "End of line" })
+vim.keymap.set("n", "<C-a>", "^", { desc = "Beg of line" })
+vim.keymap.set("v", "<C-e>", "g_", { desc = "End of line" })
+vim.keymap.set("v", "<C-a>", "^", { desc = "Beg of line" })
+vim.keymap.set("c", "<C-e>", "<End>", { desc = "End of line" })
+vim.keymap.set("c", "<C-a>", "<Home>", { desc = "Beg of line" })
+vim.keymap.set("c", "<C-b>", "<Left>", { desc = "Left" })
+vim.keymap.set("c", "<C-f>", "<Right>", { desc = "Right" })
 
-map("i", "<C-e>", "<Esc>A", { desc = "End of line" })
-map("i", "<C-a>", "<Esc>I", { desc = "Beg of line" })
-map("i", "<C-b>", "<Left>", { desc = "Left" })
-map("i", "<C-f>", "<Right>", { desc = "Right" })
-map("n", "<C-e>", "$", { desc = "End of line" })
-map("n", "<C-a>", "^", { desc = "Beg of line" })
-map("v", "<C-e>", "g_", { desc = "End of line" })
-map("v", "<C-a>", "^", { desc = "Beg of line" })
-map("c", "<C-e>", "<End>", { desc = "End of line" })
-map("c", "<C-a>", "<Home>", { desc = "Beg of line" })
-map("c", "<C-b>", "<Left>", { desc = "Left" })
-map("c", "<C-f>", "<Right>", { desc = "Right" })
+-- -- toggle options
+-- vim.keymap.set("n", "<Leader>uc", ":set cursorline!<CR>", { desc = "Toggle cursorline" })
+Snacks.toggle.option("cursorline", { name = "Cursorline", global = true }):map("<Leader>uc")
+-- Snacks.toggle
+--   .option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 })
+--   :map("<leader>uC")
 
-map("n", "<Leader>sk", ":FzfLua keymaps<CR>", { desc = "Search Keymaps" })
+vim.keymap.set("n", "<Leader>a:", "A;<Esc>", { desc = "Append ; to line" })
 
--- toggle options
--- map("n", "<Leader>tc", ":set cursorline!<CR>", { desc = "Toggle cursorline" })
-map("n", "<Leader>uc", ":set cursorline!<CR>", { desc = "Toggle cursorline" })
+vim.keymap.set("n", "<Leader>fs", ":w<CR>", { desc = "Write file" })
+vim.keymap.set("n", "<Leader>fw", ":w<CR>", { desc = "Write file" })
+vim.keymap.set("n", "<Leader>fR", ":earlier 1f<CR>", { desc = "Revert to last write" })
 
-Snacks.toggle
-  .option("showtabline", { off = 0, on = vim.o.showtabline > 0 and vim.o.showtabline or 2, name = "Tabline", global = true })
-  :map("<leader>ut")
-
-Snacks.toggle({
-  name = "Statusline",
-  get = function()
-    return vim.o.laststatus == 3
-  end,
-  set = function(state)
-    vim.o.laststatus = state and 3 or 0
-  end,
-}):map("<leader>uS")
-
-map("n", "<Leader>a:", "A;<Esc>", { desc = "Append ; to line" })
-
-map("n", "<Leader>bb", ":Telescope buffers<CR>", { desc = "Telescope buffers" })
-
-map("n", "<Leader>fs", ":w<CR>", { desc = "Write file" })
-map("n", "<Leader>fw", ":w<CR>", { desc = "Write file" })
-map("n", "<Leader>fR", ":earlier 1f<CR>", { desc = "Revert to last write" })
-
-map("n", "<Leader>w=", "<C-w>=", { desc = "Balance splits" })
-map("n", "<Leader>wc", "<C-w>c", { desc = "Close window" })
-map("n", "<Leader>wH", "<C-w>H", { desc = "Move left" })
-map("n", "<Leader>wh", "<C-w>h", { desc = "Change left" })
-map("n", "<Leader>wJ", "<C-w>J", { desc = "Move down" })
-map("n", "<Leader>wj", "<C-w>j", { desc = "Change down" })
-map("n", "<Leader>wK", "<C-w>K", { desc = "Move up" })
-map("n", "<Leader>wk", "<C-w>k", { desc = "Change up" })
-map("n", "<Leader>wL", "<C-w>L", { desc = "Move right" })
-map("n", "<Leader>wl", "<C-w>l", { desc = "Change right" })
-map("n", "<Leader>wo", "<C-w>o", { desc = "Only window" })
-map("n", "<Leader>wq", "<C-w>c", { desc = "Close window" })
-map("n", "<Leader>wR", "<C-w>R", { desc = "Rotate windows <-" })
-map("n", "<Leader>wr", "<C-w>r", { desc = "Rotate windows ->" })
-map("n", "<Leader>ws", ":split<CR>", { desc = "Horizontal split" })
-map("n", "<Leader>wt", ":tab split<CR>", { desc = "New tab w/ current buf" })
-map("n", "<Leader>wv", ":vsplit<CR>", { desc = "Veritcal split" })
-map("n", "<Leader>wW", "<C-w>W", { desc = "Other window <-" })
-map("n", "<Leader>ww", "<C-w>w", { desc = "Other window ->" })
+vim.keymap.set("n", "<Leader>w=", "<C-w>=", { desc = "Balance splits" })
+vim.keymap.set("n", "<Leader>wc", "<C-w>c", { desc = "Close window" })
+vim.keymap.set("n", "<Leader>wH", "<C-w>H", { desc = "Move left" })
+vim.keymap.set("n", "<Leader>wh", "<C-w>h", { desc = "Change left" })
+vim.keymap.set("n", "<Leader>wJ", "<C-w>J", { desc = "Move down" })
+vim.keymap.set("n", "<Leader>wj", "<C-w>j", { desc = "Change down" })
+vim.keymap.set("n", "<Leader>wK", "<C-w>K", { desc = "Move up" })
+vim.keymap.set("n", "<Leader>wk", "<C-w>k", { desc = "Change up" })
+vim.keymap.set("n", "<Leader>wL", "<C-w>L", { desc = "Move right" })
+vim.keymap.set("n", "<Leader>wl", "<C-w>l", { desc = "Change right" })
+vim.keymap.set("n", "<Leader>wo", "<C-w>o", { desc = "Only window" })
+vim.keymap.set("n", "<Leader>wq", "<C-w>c", { desc = "Close window" })
+vim.keymap.set("n", "<Leader>wR", "<C-w>R", { desc = "Rotate windows <-" })
+vim.keymap.set("n", "<Leader>wr", "<C-w>r", { desc = "Rotate windows ->" })
+vim.keymap.set("n", "<Leader>ws", ":split<CR>", { desc = "Horizontal split" })
+vim.keymap.set("n", "<Leader>wt", ":tab split<CR>", { desc = "New tab w/ current buf" })
+vim.keymap.set("n", "<Leader>wv", ":vsplit<CR>", { desc = "Veritcal split" })
+vim.keymap.set("n", "<Leader>wW", "<C-w>W", { desc = "Other window <-" })
+vim.keymap.set("n", "<Leader>ww", "<C-w>w", { desc = "Other window ->" })
 
 -- https://github.com/nvzone/menu
 vim.keymap.set("n", "<C-t>", function()

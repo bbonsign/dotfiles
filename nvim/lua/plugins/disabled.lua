@@ -32,4 +32,8 @@ return {
     "lukas-reineke/indent-blankline.nvim",
     enabled = false,
   },
+  {
+    "MagicDuck/grug-far.nvim",
+    enabled = false,
+  },
 }

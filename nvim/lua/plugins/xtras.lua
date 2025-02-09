@@ -1,14 +1,4 @@
 return {
-  -- Search for nerd font icons
-  {
-    "2kabhishek/nerdy.nvim",
-    dependencies = {
-      "stevearc/dressing.nvim",
-      "nvim-telescope/telescope.nvim",
-    },
-    cmd = "Nerdy",
-  },
-
   {
     "nvzone/menu",
     lazy = true,

@@ -17,6 +17,7 @@ window-theme = ghostty
 
 keybind = ctrl+x>shift+comma=jump_to_prompt:-1
 keybind = ctrl+x>shift+period=jump_to_prompt:+1
+keybind = ctrl+x>ctrl+x=text:\x0018
 keybind = ctrl+x>escape=ignore
 keybind = ctrl+x>ctrl+x>escape=ignore
 keybind = ctrl+x>shift+q=toggle_quick_terminal

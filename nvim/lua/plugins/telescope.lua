@@ -25,70 +25,71 @@ return {
     },
   },
   keys = {
-    {
-      "<leader>:",
-      ":Telescope commands<CR>",
-      desc = "Telescope commands",
-    },
-    {
-      "<leader>/",
-      function()
-        require("telescope.builtin").live_grep()
-      end,
-      desc = "Live Grep",
-    },
-    {
-      "<leader>sg",
-      function()
-        require("telescope.builtin").live_grep()
-      end,
-      desc = "Live Grep",
-    },
+    -- { "<Leader>.", ":Telescope buffers<CR>", desc = "Buffers" },
+    -- {
+    --   "<leader>:",
+    --   ":Telescope commands<CR>",
+    --   desc = "Telescope commands",
+    -- },
+    -- {
+    --   "<leader>/",
+    --   function()
+    --     require("telescope.builtin").live_grep()
+    --   end,
+    --   desc = "Live Grep",
+    -- },
+    -- {
+    --   "<leader>sg",
+    --   function()
+    --     require("telescope.builtin").live_grep()
+    --   end,
+    --   desc = "Live Grep",
+    -- },
     -- add a keymap to browse plugin files
-    {
-      "<leader>sP",
-      function()
-        require("telescope.builtin").find_files({
-          cwd = require("lazy.core.config").options.root,
-        })
-      end,
-      desc = "find plugin file",
-    },
-    {
-      "<leader>s/",
-      ":Telescope<CR>",
-      desc = "Telescope",
-    },
-    {
-      "<leader>'",
-      ":Telescope resume<CR>",
-      desc = "Telescope resume",
-    },
-    {
-      '<leader>"',
-      ":Telescope registers<CR>",
-      desc = "Telescope",
-    },
-    {
-      "<leader>g/",
-      ":Telescope git_status<CR>",
-      desc = "Telescope git_status",
-    },
-    {
-      "<leader>gc",
-      ":Telescope git_bcommits<CR>",
-      desc = "Telescope Buffer Commits",
-    },
-    {
-      "<leader>gf",
-      ":Telescope git_files<CR>",
-      desc = "Telescope git_files",
-    },
-    {
-      "<leader>.",
-      ":Telescope buffers<CR>",
-      desc = "Telescope buffers",
-    },
+    -- {
+    --   "<leader>sP",
+    --   function()
+    --     require("telescope.builtin").find_files({
+    --       cwd = require("lazy.core.config").options.root,
+    --     })
+    --   end,
+    --   desc = "find plugin file",
+    -- },
+    -- {
+    --   "<leader>s/",
+    --   ":Telescope<CR>",
+    --   desc = "Telescope",
+    -- },
+    -- {
+    --   "<leader>'",
+    --   ":Telescope resume<CR>",
+    --   desc = "Telescope resume",
+    -- },
+    -- {
+    --   '<leader>"',
+    --   ":Telescope registers<CR>",
+    --   desc = "Telescope",
+    -- },
+    -- {
+    --   "<leader>g/",
+    --   ":Telescope git_status<CR>",
+    --   desc = "Telescope git_status",
+    -- },
+    -- {
+    --   "<leader>gc",
+    --   ":Telescope git_bcommits<CR>",
+    --   desc = "Telescope Buffer Commits",
+    -- },
+    -- {
+    --   "<leader>gf",
+    --   ":Telescope git_files<CR>",
+    --   desc = "Telescope git_files",
+    -- },
+    -- {
+    --   "<leader>.",
+    --   ":Telescope buffers<CR>",
+    --   desc = "Telescope buffers",
+    -- },
     {
       "<leader>d/b",
       ":Telescope dap list_breakpoints<CR>",
