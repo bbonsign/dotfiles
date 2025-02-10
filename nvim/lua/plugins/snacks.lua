@@ -40,13 +40,14 @@ return {
               action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
             },
             { icon = " ", key = "s", desc = "Restore Session", section = "session" },
-            { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
+            { icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
             { icon = " ", key = "q", desc = "Quit", action = ":qa" },
           },
         },
       },
       debug = { enabled = true },
       git = { enabled = true },
+      image = { enabled = false },
       indent = { enabled = false },
       lazygit = { enabled = true },
       scoll = { enabled = false },
@@ -68,6 +69,13 @@ return {
           Snacks.picker.commands()
         end,
         desc = "Commands",
+      },
+      {
+        "<Leader>/",
+        function()
+          LazyVim.pick("live_grep", { root = false })
+        end,
+        desc = "Grep (cwd)",
       },
       {
         '<Leader>"',
@@ -125,6 +133,8 @@ return {
         end,
         desc = "Lazygit Log File",
       },
+      { "<leader>sG", LazyVim.pick("live_grep"), desc = "Grep (Root Dir)" },
+      { "<leader>sg", LazyVim.pick("live_grep", { root = false }), desc = "Grep (cwd)" },
       {
         "<leader>sp",
         function()
@@ -145,6 +155,18 @@ return {
           Snacks.picker.resume()
         end,
         desc = "Resume",
+      },
+      {
+        "<leader>sW",
+        LazyVim.pick("grep_word"),
+        desc = "Visual selection or word (Root Dir)",
+        mode = { "n", "x" },
+      },
+      {
+        "<leader>sw",
+        LazyVim.pick("grep_word", { root = false }),
+        desc = "Visual selection or word (cwd)",
+        mode = { "n", "x" },
       },
       {
         "<leader>uC",

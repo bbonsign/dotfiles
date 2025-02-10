@@ -1,5 +1,14 @@
+local set_layout = function(layout)
+  Snacks.picker.get()[1]:set_layout(layout)
+end
+
 return {
-  layout = "ivy",
+  layout = {
+    preset = "ivy",
+    layout = {
+      title_pos = "center",
+    },
+  },
   win = {
     -- input window
     input = {
@@ -24,12 +33,17 @@ return {
         ["<A-h>"] = { "toggle_hidden", mode = { "i", "n" } },
         ["<A-i>"] = { "toggle_ignored", mode = { "i", "n" } },
         ["<A-m>"] = { "toggle_maximize", mode = { "i", "n" } },
+        ["<C-z>p"] = { "focus_preview", mode = { "i", "n" } },
+        ["<C-z><C-p>"] = { "focus_preview", mode = { "i", "n" } },
+        ["<C-z>m"] = { "toggle_maximize", mode = { "i", "n" } },
+        ["<C-z><C-m>"] = { "toggle_maximize", mode = { "i", "n" } },
         ["<C-space>"] = { "toggle_preview", mode = { "i", "n" } },
         ["<A-w>"] = { "cycle_win", mode = { "i", "n" } },
         ["<C-a>"] = { "select_all", mode = { "n", "i" } },
-        ["<C-b>"] = { "preview_scroll_up", mode = { "i", "n" } },
-        ["<C-d>"] = { "list_scroll_down", mode = { "i", "n" } },
-        ["<C-f>"] = { "preview_scroll_down", mode = { "i", "n" } },
+        -- ["<C-u>"] = { "list_scroll_up", mode = { "i", "n" } },
+        -- ["<C-d>"] = { "list_scroll_down", mode = { "i", "n" } },
+        ["<C-u>"] = { "preview_scroll_up", mode = { "i", "n" } },
+        ["<C-d>"] = { "preview_scroll_down", mode = { "i", "n" } },
         ["<C-g>"] = { "toggle_live", mode = { "i", "n" } },
         ["<C-j>"] = { "list_down", mode = { "i", "n" } },
         ["<C-k>"] = { "list_up", mode = { "i", "n" } },
@@ -37,12 +51,37 @@ return {
         ["<C-p>"] = { "list_up", mode = { "i", "n" } },
         ["<C-q>"] = { "qflist", mode = { "i", "n" } },
         ["<C-s>"] = { "edit_split", mode = { "i", "n" } },
-        ["<C-u>"] = { "list_scroll_up", mode = { "i", "n" } },
         ["<C-v>"] = { "edit_vsplit", mode = { "i", "n" } },
+        ["<C-z>d"] = {
+          function()
+            set_layout("default")
+          end,
+          mode = { "i", "n" },
+          desc = "layout_default",
+        },
+        ["<C-z><C-d>"] = {
+          function()
+            set_layout("default")
+          end,
+          mode = { "i", "n" },
+          desc = "layout_default",
+        },
         ["<C-z>h"] = { "layout_left", mode = { "i", "n" } },
         ["<C-z><C-h>"] = { "layout_left", mode = { "i", "n" } },
-        ["<C-z>j"] = { "layout_bottom", mode = { "i", "n" } },
-        ["<C-z><C-j>"] = { "layout_bottom", mode = { "i", "n" } },
+        ["<C-z>j"] = {
+          function()
+            set_layout("ivy")
+          end,
+          mode = { "i", "n" },
+          desc = "layout_ivy",
+        },
+        ["<C-z><C-j>"] = {
+          function()
+            set_layout("ivy")
+          end,
+          mode = { "i", "n" },
+          desc = "layout_ivy",
+        },
         ["<C-z>k"] = { "layout_top", mode = { "i", "n" } },
         ["<C-z><C-k>"] = { "layout_top", mode = { "i", "n" } },
         ["<C-z>l"] = { "layout_right", mode = { "i", "n" } },
@@ -71,24 +110,54 @@ return {
         ["<A-f>"] = "toggle_follow",
         ["<A-h>"] = "toggle_hidden",
         ["<A-i>"] = "toggle_ignored",
-        ["<A-m>"] = "toggle_maximize",
-        -- ["<A-p>"] = "toggle_preview",
+        ["<C-z>p"] = { "focus_preview", mode = { "i", "n" } },
+        ["<C-z><C-p>"] = { "focus_preview", mode = { "i", "n" } },
+        ["<A-m>"] = { "toggle_maximize", mode = { "i", "n" } },
+        ["<C-z>m"] = { "toggle_maximize", mode = { "i", "n" } },
+        ["<C-z><C-m>"] = { "toggle_maximize", mode = { "i", "n" } },
+        ["<C-space>"] = { "toggle_preview", mode = { "i", "n" } },
         ["<A-w>"] = "cycle_win",
         ["<C-a>"] = "select_all",
-        ["<C-b>"] = "preview_scroll_up",
-        ["<C-d>"] = "list_scroll_down",
-        ["<C-f>"] = "preview_scroll_down",
+        -- ["<C-u>"] = "list_scroll_up",
+        -- ["<C-d>"] = "list_scroll_down",
+        ["<C-u>"] = "preview_scroll_up",
+        ["<C-d>"] = "preview_scroll_down",
         ["<C-j>"] = "list_down",
         ["<C-k>"] = "list_up",
         ["<C-n>"] = "list_down",
         ["<C-p>"] = "list_up",
         ["<C-s>"] = "edit_split",
-        ["<C-u>"] = "list_scroll_up",
         ["<C-v>"] = "edit_vsplit",
+        ["<C-z>d"] = {
+          function()
+            set_layout("default")
+          end,
+          mode = { "i", "n" },
+          desc = "layout_default",
+        },
+        ["<C-z><C-d>"] = {
+          function()
+            set_layout("default")
+          end,
+          mode = { "i", "n" },
+          desc = "layout_default",
+        },
         ["<C-z>h"] = { "layout_left", mode = { "i", "n" } },
         ["<C-z><C-h>"] = { "layout_left", mode = { "i", "n" } },
-        ["<C-z>j"] = { "layout_bottom", mode = { "i", "n" } },
-        ["<C-z><C-j>"] = { "layout_bottom", mode = { "i", "n" } },
+        ["<C-z>j"] = {
+          function()
+            set_layout("ivy")
+          end,
+          mode = { "i", "n" },
+          desc = "layout_ivy",
+        },
+        ["<C-z><C-j>"] = {
+          function()
+            set_layout("ivy")
+          end,
+          mode = { "i", "n" },
+          desc = "layout_ivy",
+        },
         ["<C-z>k"] = { "layout_top", mode = { "i", "n" } },
         ["<C-z><C-k>"] = { "layout_top", mode = { "i", "n" } },
         ["<C-z>l"] = { "layout_right", mode = { "i", "n" } },
@@ -108,7 +177,7 @@ return {
     -- preview window
     preview = {
       keys = {
-        ["<Esc>"] = "close",
+        ["<Esc>"] = false,
         ["q"] = "close",
         ["i"] = "focus_input",
         ["<ScrollWheelDown>"] = "list_scroll_wheel_down",

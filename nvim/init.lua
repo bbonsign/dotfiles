@@ -25,4 +25,4 @@ end
 
 vim.keymap.set("n", "<Leader>ls", function()
   switch_case()
-end, { noremap = true, silent = true })
+end, { noremap = true, silent = true, desc = "Camel<->Snake" })
