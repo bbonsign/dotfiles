@@ -41,6 +41,13 @@ return {
             },
             { icon = " ", key = "s", desc = "Restore Session", section = "session" },
             { icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
+            {
+              icon = "󰒲 ",
+              key = "x",
+              desc = "LazyExtras",
+              action = ":LazyExtras",
+              enabled = package.loaded.lazy ~= nil,
+            },
             { icon = " ", key = "q", desc = "Quit", action = ":qa" },
           },
         },
@@ -73,7 +80,7 @@ return {
       {
         "<Leader>/",
         function()
-          LazyVim.pick("live_grep", { root = false })
+          Snacks.picker.grep({ root = false })
         end,
         desc = "Grep (cwd)",
       },
@@ -104,6 +111,20 @@ return {
           Snacks.notifier.hide()
         end,
         desc = "Dismiss all Notifications",
+      },
+      {
+        "<Leader>bb",
+        function()
+          Snacks.picker.buffers()
+        end,
+        desc = "Buffers",
+      },
+      {
+        "<Leader>bs",
+        function()
+          Snacks.picker.buffers()
+        end,
+        desc = "Buffers",
       },
       {
         "<leader>D",
@@ -157,14 +178,34 @@ return {
         desc = "Resume",
       },
       {
-        "<leader>sW",
-        LazyVim.pick("grep_word"),
-        desc = "Visual selection or word (Root Dir)",
-        mode = { "n", "x" },
+        "<Leader>s=",
+        function()
+          Snacks.picker.spelling()
+        end,
+        desc = "Spelling",
       },
       {
-        "<leader>sw",
+        "<leader>sW",
         LazyVim.pick("grep_word", { root = false }),
+        desc = "Visual selection or word (cwd)",
+        mode = { "n", "x" },
+      },
+      -- Same as `Snacks.picker.grep_word` but adds "\b" regex word boudaries to the
+      {
+        "<leader>sw",
+        function()
+          Snacks.picker.pick("grep", {
+            root = false,
+            format = "file",
+            live = false,
+            supports_live = true,
+            search = function(p)
+              local word = p.visual and p.visual.text or vim.fn.expand("<cword>")
+              local wordb = string.format("\\b%s\\b", word)
+              return wordb
+            end,
+          })
+        end,
         desc = "Visual selection or word (cwd)",
         mode = { "n", "x" },
       },

@@ -2,6 +2,11 @@ return {
   "folke/trouble.nvim",
   keys = {
     {
+      "<leader>xx",
+      "<cmd>Trouble<cr>",
+      desc = "Trouble",
+    },
+    {
       "<leader>xs",
       "<cmd>Trouble lsp_document_symbols toggle focus=true win.position=right<cr>",
       desc = "Doc Symbols (Trouble)",
