@@ -127,13 +127,6 @@ return {
         desc = "Buffers",
       },
       {
-        "<leader>D",
-        function()
-          Snacks.dashboard()
-        end,
-        desc = "Dashboard",
-      },
-      {
         "<leader>gb",
         function()
           Snacks.picker.git_status()()

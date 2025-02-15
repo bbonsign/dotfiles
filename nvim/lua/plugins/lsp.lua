@@ -43,7 +43,7 @@ return {
       keys[#keys + 1] = {
         "<leader>li",
         function()
-          vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ nil }))
+          vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
         end,
         desc = "Toggle Inlay Hints",
         mode = { "n", "v" },
@@ -52,6 +52,9 @@ return {
     end,
 
     opts = {
+      -- see above keymap to toggle inlay_hints
+      inlay_hints = { enabled = false },
+
       -- options for vim.diagnostic.config()
       diagnostics = {
         -- virtual_text = true,
@@ -65,7 +68,9 @@ return {
           prefix = "",
         },
       },
+
       setup = {
+
         ruff_lsp = function()
           require("lazyvim.util").lsp.on_attach(function(client, _)
             if client.name == "ruff_lsp" then
@@ -75,6 +80,7 @@ return {
           end)
         end,
       },
+
       servers = {
         pyright = {
           settings = {
