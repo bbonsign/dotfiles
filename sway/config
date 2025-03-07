@@ -58,7 +58,7 @@ gaps {
 
 # https://i3wm.org/docs/userguide.html#client_colors
 # class                 border  backgr.  text    indicator child_border
-client.focused          #285577 $bg00    $fg     #2e9ef4   #285577
+client.focused          #285577 $bgbb    $fg     #2e9ef4   #285577
 client.focused_inactive #333333 #5f676a  $fg     #484e50   $bg
 client.unfocused        $bg     $blackcc $fgaa   #292d2e   #222222
 client.urgent           #2f343a $redaa   $bg     $redaa    $redaa
