@@ -48,6 +48,7 @@ return {
               action = ":LazyExtras",
               enabled = package.loaded.lazy ~= nil,
             },
+            { icon = " ", key = "m", desc = "Mason", action = ":Mason" },
             { icon = " ", key = "q", desc = "Quit", action = ":qa" },
           },
         },
@@ -133,19 +134,33 @@ return {
         end,
         desc = "Blame Line",
       },
-      {
-        "<leader>gB",
-        function()
-          Snacks.git.blame_line()
-        end,
-        desc = "Blame Line",
-      },
+      -- {
+      --   "<leader>gB",
+      --   function()
+      --     Snacks.git.blame_line()
+      --   end,
+      --   desc = "Blame Line",
+      -- },
       {
         "<leader>gL",
         function()
           Snacks.lazygit.log_file()
         end,
         desc = "Lazygit Log File",
+      },
+      {
+        "<leader>sD",
+        function()
+          Snacks.picker.diagnostics()
+        end,
+        desc = "Diagnostics",
+      },
+      {
+        "<leader>sd",
+        function()
+          Snacks.picker.diagnostics_buffer()
+        end,
+        desc = "Buffer Diagnostics",
       },
       { "<leader>sG", LazyVim.pick("live_grep"), desc = "Grep (Root Dir)" },
       { "<leader>sg", LazyVim.pick("live_grep", { root = false }), desc = "Grep (cwd)" },

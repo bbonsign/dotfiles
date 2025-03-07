@@ -7,24 +7,20 @@ return {
       local format = function()
         require("lazyvim.util").format({ force = true })
       end
+      -- LazyVim.lsp.on_attach(function(_client, _buffer)
+      --   vim.keymap.set("n", "<Leader>cli", "<Cmd>LspInfo<CR>", { desc = "LspInfo" })
+      --   vim.keymap.set("n", "<Leader>cll", "<Cmd>LspRestart<CR>", { desc = "LspRestart" })
+      --   vim.keymap.set("n", "<Leader>clr", "<Cmd>LspRestart<CR>", { desc = "LspRestart" })
+      --   vim.keymap.set("n", "<Leader>cls", "<Cmd>LspStart<CR>", { desc = "LspStart" })
+      --   vim.keymap.set("n", "<Leader>clS", "<Cmd>LspStop<CR>", { desc = "LspStop" })
+      -- end)
+
       keys[#keys + 1] = { "<leader>lf", format, desc = "Format Document" }
-      if require("lazyvim.util").has("inc-rename.nvim") then
-        keys[#keys + 1] = {
-          "<leader>lr",
-          function()
-            local inc_rename = require("inc_rename")
-            return ":" .. inc_rename.config.cmd_name .. " " .. vim.fn.expand("<cword>")
-          end,
-          expr = true,
-          desc = "Rename",
-          has = "rename",
-        }
-      else
-        keys[#keys + 1] = { "<leader>lr", vim.lsp.buf.rename, desc = "Rename", has = "rename" }
-      end
+      keys[#keys + 1] = { "<leader>lr", vim.lsp.buf.rename, desc = "Rename", has = "rename" }
 
       keys[#keys + 1] =
         { "<leader>la", vim.lsp.buf.code_action, desc = "Code Action", mode = { "n", "v" }, has = "codeAction" }
+
       keys[#keys + 1] = {
         "<leader>lA",
         function()
@@ -40,6 +36,7 @@ return {
         desc = "Source Action",
         has = "codeAction",
       }
+
       keys[#keys + 1] = {
         "<leader>li",
         function()
@@ -48,6 +45,12 @@ return {
         desc = "Toggle Inlay Hints",
         mode = { "n", "v" },
         has = "inlay",
+      }
+
+      keys[#keys + 1] = {
+        "<leader>lR",
+        "<Cmd>LspRestart<CR>",
+        desc = "LspRestart",
       }
     end,
 

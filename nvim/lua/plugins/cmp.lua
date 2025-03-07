@@ -76,25 +76,18 @@ return {
       -- signature = { enabled = true },
 
       sources = {
-        -- adding any nvim-cmp sources here will enable them
-        -- with blink.compat
-        compat = {},
-        default = { "lsp", "path", "snippets", "buffer" },
-        -- By default, we choose providers for the cmdline based on the current cmdtype
-        -- You may disable cmdline completions by replacing this with an empty table
-        cmdline = function()
-          local type = vim.fn.getcmdtype()
-          -- Search forward and backward
-          if type == "/" or type == "?" then
-            return { "buffer" }
-          end
-          -- Commands
-          if type == ":" then
-            return { "cmdline" }
-          end
-          return {}
-        end,
+        -- adding any nvim-cmp sources here will enable them with blink.compat
+        -- compat = {},
+        default = { "lsp", "path", "snippets", "buffer", "markdown" },
+        providers = {
+          markdown = {
+            name = "RenderMarkdown",
+            module = "render-markdown.integ.blink",
+            fallbacks = { "lsp" },
+          },
+        },
       },
+
       keymap = {
         preset = "enter",
         ["<Esc>"] = {},
@@ -109,7 +102,27 @@ return {
           LazyVim.cmp.map({ "snippet_forward", "ai_accept" }),
           "fallback",
         },
-        cmdline = {
+      },
+      cmdline = {
+        enabled = true,
+        completion = {
+          ghost_text = { enabled = false },
+        },
+        -- By default, we choose providers for the cmdline based on the current cmdtype
+        -- You may disable cmdline completions by replacing this with an empty table
+        sources = function()
+          local type = vim.fn.getcmdtype()
+          -- Search forward and backward
+          if type == "/" or type == "?" then
+            return { "buffer" }
+          end
+          -- Commands
+          if type == ":" then
+            return { "cmdline" }
+          end
+          return {}
+        end,
+        keymap = {
           preset = "enter",
           -- ["<Esc>"] = { "cancel", "fallback" },
           ["<C-c>"] = { "cancel", "fallback" },
@@ -117,7 +130,7 @@ return {
           ["<Down>"] = { "select_next", "fallback" },
           ["<C-k>"] = { "select_prev", "fallback" },
           ["<C-j>"] = { "show", "select_next", "fallback" },
-          ["<C-y>"] = { "select_and_accept" },
+          ["<C-y>"] = { "select_accept_and_enter" },
         },
       },
     },

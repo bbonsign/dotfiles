@@ -31,8 +31,8 @@ vim.keymap.set("n", "<C-h>", "<C-e>")
 vim.keymap.set("n", "<C-j>", "<C-e>")
 vim.keymap.set("n", "<C-k>", "<C-y>")
 
-vim.keymap.set("n", "<Leader>p", '"0p', { desc = "Paste last yank" })
-vim.keymap.set("n", "<Leader>P", '"0P', { desc = "Paste last yank" })
+vim.keymap.set({ "n", "v" }, "<Leader>p", '"0p', { desc = "Paste last yank" })
+vim.keymap.set({ "n", "v" }, "<Leader>P", '"0P', { desc = "Paste last yank" })
 
 vim.keymap.set("n", "<Leader>=", ":.lua<CR>", { desc = "Lua eval" })
 vim.keymap.set("n", "g=", ":.lua<CR>", { desc = "Lua eval" })
