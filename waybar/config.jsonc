@@ -7,13 +7,14 @@
   // Choose the order of the modules
   "modules-left": [
     "sway/workspaces",
+    // "niri/workspaces",
     "sway/mode",
-    "sway/scratchpad"
-    // "custom/media"
+    "sway/scratchpad",
     // "sway/window"
+    // "niri/window"
+    "wlr/taskbar"
   ],
-  // "modules-center": [],
-  // "modules-left": ["hyprland/workspaces"],
+  // "modules-center": ["wlr/taskbar"],
   // "modules-center": ["hyprland/window"],
   "modules-right": [
     // "idle_inhibitor",
@@ -45,6 +46,9 @@
       // "focused": " ",
       "default": " "
     }
+  },
+  "wlr/taskbar": {
+    "on-click": "activate"
   },
   "keyboard-state": {
     "numlock": true,
